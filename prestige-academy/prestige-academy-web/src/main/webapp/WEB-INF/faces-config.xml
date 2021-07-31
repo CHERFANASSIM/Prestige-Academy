@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<faces-config version="2.2"
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://xmlns.jcp.org/xml/ns/javaee
+        http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+
+
+	<navigation-rule>
+		<display-name>FicheSommelier</display-name>
+		<from-view-id>/Sommelier.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ficheStag</from-outcome>
+			<to-view-id>/FicheStagiaire.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	
+	
+	<navigation-rule>
+		<display-name>FicheGerantHotel</display-name>
+		<from-view-id>/GerantHotel.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ficheStag1</from-outcome>
+			<to-view-id>/FicheStagiaire.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>FicheMaitreHotel</display-name>
+		<from-view-id>/MaitreHotel.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ficheStag2</from-outcome>
+			<to-view-id>/FicheStagiaire.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>FicheChefRang</display-name>
+		<from-view-id>/ChefRang.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ficheStag3</from-outcome>
+			<to-view-id>/FicheStagiaire.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/FicheStagiaire.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ficheStagModif</from-outcome>
+			<to-view-id>/FicheStagiaireModification.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>FicheGerantHotelModif</display-name>
+		<from-view-id>/GerantHotel.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ficheStagModif1</from-outcome>
+			<to-view-id>/FicheStagiaireModification.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>FicheMaitreHotelModif</display-name>
+		<from-view-id>/MaitreHotel.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ficheStagModif2</from-outcome>
+			<to-view-id>/FicheStagiaireModification.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>FicheChefRangHotelModif</display-name>
+		<from-view-id>/ChefRang.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ficheStagModif3</from-outcome>
+			<to-view-id>/FicheStagiaireModification.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+<navigation-rule>
+		<display-name>FicheModifiee</display-name>
+		<from-view-id>/FicheStagiaireModification.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ficheModifiee</from-outcome>
+			<to-view-id>/FicheStagiaire.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/InterfaceConnexion.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>connexionEcole</from-outcome>
+			<to-view-id>/ConnexionEcole.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/InterfaceConnexion.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>connexionEntreprise</from-outcome>
+			<to-view-id>/ConnexionEntreprise.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/InterfaceConnexion.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>connexionStagiaire</from-outcome>
+			<to-view-id>/ConnexionStagiaire.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+
+
+    <navigation-rule>
+    	<from-view-id>/ListEvents.xhtml</from-view-id>
+    	<navigation-case>
+    		<from-outcome>ficheEvenement</from-outcome>
+    		<to-view-id>/FicheEvenement.xhtml</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+    	<from-view-id>/FicheEvenement.xhtml</from-view-id>
+    	<navigation-case>
+    		<from-outcome>listEvenement</from-outcome>
+    		<to-view-id>/ListEvents.xhtml</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+    	<from-view-id>/ListEvents.xhtml</from-view-id>
+    	<navigation-case>
+    		<from-outcome>ficheEvenementModif</from-outcome>
+    		<to-view-id>/FicheEvenementModif.xhtml</to-view-id>
+    	</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<display-name>ListeEntreprise</display-name>
+		<from-view-id>/ListeEntreprises.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>modificationEntreprise</from-outcome>
+			<to-view-id>/FicheModificationEntreprise.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<display-name>ListeEntreprise</display-name>
+		<from-view-id>/ListeEntreprises.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>AffichageEntreprise</from-outcome>
+			<to-view-id>/FicheEntreprise.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<display-name>ListeEntrepriseProspect</display-name>
+		<from-view-id>/ListeEntrepriseProspect.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>SaisieEntrepriseProspect</from-outcome>
+			<to-view-id>/saisieProspectEntreprise.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+    <navigation-rule>
+		<from-view-id>/ListeOrganismes.xhtml</from-view-id>
+		<navigation-case>
+    		<from-outcome>ficheOrgaModif</from-outcome>
+    		<to-view-id>/ficheModificationOrganisme.xhtml</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+		<from-view-id>/ListeOrganismes.xhtml</from-view-id>
+		<navigation-case>
+    		<from-outcome>detailsOrganisme</from-outcome>
+    		<to-view-id>/detailsOrganisme.xhtml</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+    
+       
+    <navigation-rule>
+		<from-view-id>/Dashbord.xhtml</from-view-id>
+		<navigation-case>
+    		<from-outcome>dashbord</from-outcome>
+    		<to-view-id>/Dashbord.xhtml</to-view-id>
+    	</navigation-case>
+    </navigation-rule>
+    
+    
+    
+    
+</faces-config>

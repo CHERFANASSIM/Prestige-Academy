@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+
+	<ui:define name="content">
+		<h:form id="form">
+			<br />
+			<h1 id="titrePageFi">Dossiers de Paiements Stagiaires</h1>
+			<p:commandButton id="retourFi" value="Retour"
+				onclick="window.history.back();" />
+			<br />
+			<hr class="style-six"></hr>
+
+			<br />
+
+			<p:growl id="msgs" showDetail="true" />
+
+			<div
+				class="table table-bordered table-condensed table-striped table-hover">
+				<p:dataTable id="financeDT" var="ligneFinancement" class="table"
+					value="#{financementControlleur.listeStagiaires}" editable="true"
+					scrollable="true" border="1">
+
+					<p:ajax event="rowEdit"
+						listener="#{financementControlleur.onRowEdit}" update=":form:msgs" />
+					<p:ajax event="rowEditCancel"
+						listener="#{financementControlleur.onRowCancel}"
+						update=":form:msgs" />
+
+					<p:column headerText=" Nom" style="width:150px">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{ligneFinancement.nomStagiaire}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="nom" value="#{ligneFinancement.nomStagiaire}"
+									style="width:100%" label="Nom" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+
+					<p:column headerText="Prénom" style="width:150px">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{ligneFinancement.prenomStagiaire}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="prenom"
+									value="#{ligneFinancement.prenomStagiaire}" style="width:100%"
+									label="Prénom" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+
+					<p:column headerText="Promotion" style="width:150px">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{ligneFinancement.promotion.nomPromotion}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="promo"
+									value="#{ligneFinancement.promotion.nomPromotion}"
+									style="width:100%" label="Promotion" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+
+					<p:column style="width:300px" headerText="Statut du financement">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText
+									value="#{ligneFinancement.statutFinancement.nomFinancement}" />
+							</f:facet>
+							<f:facet name="input">
+								<h:selectOneMenu
+									value="#{financementControlleur.selectedStatutFinancement}"
+									style="width:250px">
+									<f:selectItems
+										value="#{financementControlleur.listeStatutsFinancements}"
+										var="p" itemLabel="#{p.nomFinancement}"
+										itemValue="#{p.nomFinancement}" />
+								</h:selectOneMenu>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+
+					<p:column headerText=" Echéances de paiement" style="width:200px">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText
+									value="#{ligneFinancement.dossierPaiement.commentaire}" />
+							</f:facet>
+							<f:facet name="input">
+								<h:selectOneMenu
+									value="#{financementControlleur.selectedDossierPaiement}"
+									style="width:150px">
+									<f:selectItems
+										value="#{financementControlleur.listeDossiersPaiements}"
+										var="fin" itemLabel="#{fin.commentaire}"
+										itemValue="#{fin.commentaire}" />
+								</h:selectOneMenu>
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText=" Montant total" style="width:150px">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText
+									value="#{ligneFinancement.statutFinancement.montant}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="montant"
+									value="#{ligneFinancement.statutFinancement.montant}"
+									style="width:100%" label="Montant" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+
+					<p:column style="width:50px">
+						<p:rowEditor />
+					</p:column>
+
+					<p:column style="width:150px">
+						<f:facet name="header"></f:facet>
+						<p:commandButton value="Facture"></p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</div>
+		</h:form>
+
+	</ui:define>
+</ui:composition>

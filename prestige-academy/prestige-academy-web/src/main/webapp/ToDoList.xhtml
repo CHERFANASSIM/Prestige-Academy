@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default2.xhtml">
+	
+	<ui:define name="content">
+<h:form id="form">
+		<br />
+		<h1 id="titrePageTodo">ToDoList</h1>  <p:commandButton id="retourTodo" value="Retour" onclick="window.history.back();"/>
+		<hr class="style-six"></hr>
+		<br />
+		
+
+
+
+
+			<div id="todoList">
+				<p:fieldset id="tacheAFaire" legend="À faire">
+					<p:dataTable id="availableTaches" var="car"
+						value="#{todolistController.listeAfaire}">
+						<p:column style="width:50px">
+							<h:outputText value="+" id="dragIcon" styleClass="ui-icon pi pi-plus" />
+							<p:draggable for="dragIcon" revert="true" helper="clone" />
+
+						</p:column>
+						<p:column>
+							<f:facet name="header">Tâche </f:facet>
+				#{car.nomTache}
+			</p:column>
+						<p:column>
+							<f:facet name="header"> Personne(s) en charge </f:facet>
+				#{car.personnesConcernees}
+			</p:column>
+						<p:column>
+							<f:facet name="header">Date limite</f:facet>
+				#{car.dateLimiteTache}
+			</p:column>
+						<p:column>
+							<f:facet name="header">Niveau de Priorité </f:facet>
+						#{car.niveauxPriorite.nomPriorite}
+				</p:column>
+						<p:column>
+							<f:facet name="header"> Action </f:facet>
+
+
+							<p:commandLink update=":form:detail"
+								oncomplete="PF('dlg3').show()" title="Détail">
+								<p:commandButton icon="fas fa-search"></p:commandButton>
+								<f:setPropertyActionListener value="#{car}"
+									target="#{todolistController.todoModifie}" />
+							</p:commandLink>
+
+							<p:commandLink update=":form:modifier"
+								oncomplete="PF('dlg2').show()" title="Modifier">
+								<p:commandButton icon="fas fa-edit"></p:commandButton>
+								<f:setPropertyActionListener value="#{car}"
+									target="#{todolistController.todoModifie}" />
+							</p:commandLink>
+
+
+							<p:growl id="messages3" />
+							<p:commandButton  class="form-btn semibold"
+								actionListener="#{todolistController.supprimerToDo(car)}"
+								update="messages3" icon="fas fa-trash">
+								<p:confirm header="Confirmation"
+									message="Etes vous sûr de vouloir supprimer cette tâche?"
+									icon="ui-icon-alert" />
+							</p:commandButton>
+
+							<p:confirmDialog global="true">
+								<p:commandButton value="oui" type="button"
+									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+								<p:commandButton value="Non" type="button"
+									styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+
+							</p:confirmDialog>
+
+
+
+						</p:column>
+
+
+					</p:dataTable>
+				</p:fieldset>
+
+				<p:fieldset id="selectedTache" legend="En Cours"
+					style="margin-top:20px">
+					<p:outputPanel id="dropArea">
+						<h:outputText value="Déplacez ici"
+							rendered="#{empty todolistController.listeEnCours}"
+							style="font-size:24px;" />
+						<p:dataTable id="selectedCarsTable" var="car"
+							value="#{todolistController.listeEnCours}"
+							rendered="#{not empty todolistController.listeEnCours}">
+
+							<p:column style="width:50px">
+								<h:outputText value="+" id="dragIcon2" styleClass="ui-icon pi pi-plus" />
+								<p:draggable for="dragIcon2" revert="true" helper="clone" />
+
+							</p:column>
+
+
+							<p:column>
+								<f:facet name="header">Tâche </f:facet>
+				#{car.nomTache}
+			</p:column>
+							<p:column>
+								<f:facet name="header"> Personne(s) en charge </f:facet>
+				#{car.personnesConcernees}
+			</p:column>
+							<p:column>
+								<f:facet name="header">Date limite</f:facet>
+				#{car.dateLimiteTache}
+			</p:column>
+
+							<p:column>
+								<f:facet name="header">Niveau de Priorité </f:facet>
+						#{car.niveauxPriorite.nomPriorite}
+				</p:column>
+
+							<p:column>
+								<f:facet name="header"> Action </f:facet>
+
+
+								<p:commandLink update=":form:detail"
+									oncomplete="PF('dlg3').show()" title="M">
+									<p:commandButton icon="fas fa-search"></p:commandButton>
+									<f:setPropertyActionListener value="#{car}"
+										target="#{todolistController.todoModifie}" />
+								</p:commandLink>
+
+								<p:commandLink update=":form:modifier"
+									oncomplete="PF('dlg2').show()" title="M">
+									<p:commandButton icon="fas fa-edit"></p:commandButton>
+									<f:setPropertyActionListener value="#{car}"
+										target="#{todolistController.todoModifie}" />
+								</p:commandLink>
+
+
+								<p:growl id="messages3" />
+								<p:commandButton class="form-btn semibold"
+									actionListener="#{todolistController.supprimerToDo(car)}"
+									update="messages3" icon="fas fa-trash">
+									<p:confirm header="Confirmation"
+										message="Etes vous sûr de vouloir supprimer cette tâche?"
+										icon="ui-icon-alert" />
+								</p:commandButton>
+
+								<p:confirmDialog global="true">
+									<p:commandButton value="oui" type="button"
+										styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+									<p:commandButton value="Non" type="button"
+										styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+
+								</p:confirmDialog>
+
+
+							</p:column>
+
+
+						</p:dataTable>
+					</p:outputPanel>
+				</p:fieldset>
+
+				<p:droppable for="selectedTache" tolerance="touch"
+					activeStyleClass="ui-state-highlight" datasource="availableTaches"
+					onDrop="handleDrop">
+					<p:ajax listener="#{todolistController.tacheDrop}"
+						update="dropArea availableTaches" />
+				</p:droppable>
+
+
+
+				<p:fieldset id="selectedTache2" legend="Terminé"
+					style="margin-top:20px">
+					<p:outputPanel id="dropArea2">
+						<h:outputText value="Déplacez ici"
+							rendered="#{empty todolistController.listeTermine}"
+							style="font-size:24px;" />
+						<p:dataTable id="selectedCarsTable2" var="car"
+							value="#{todolistController.listeTermine}"
+							rendered="#{not empty todolistController.listeTermine}">
+
+
+							<p:column>
+								<f:facet name="header">Tâche </f:facet>
+				#{car.nomTache}
+			</p:column>
+							<p:column>
+								<f:facet name="header"> Personne(s) en charge </f:facet>
+				#{car.personnesConcernees}
+			</p:column>
+							<p:column>
+								<f:facet name="header">Date limite</f:facet>
+				#{car.dateLimiteTache}
+			</p:column>
+							<p:column>
+								<f:facet name="header">Niveau de Priorité </f:facet>
+						#{car.niveauxPriorite.nomPriorite}
+				</p:column>
+							<p:column>
+								<f:facet name="header"> Action </f:facet>
+
+								<p:commandLink update=":form:detail"
+									oncomplete="PF('dlg3').show()" title="M">
+									<p:commandButton icon="fas fa-search"></p:commandButton>
+									<f:setPropertyActionListener value="#{car}"
+										target="#{todolistController.todoModifie}" />
+								</p:commandLink>
+
+								<p:commandLink update=":form:modifier"
+									oncomplete="PF('dlg2').show()" title="M">
+									<p:commandButton icon="fas fa-edit"></p:commandButton>
+									<f:setPropertyActionListener value="#{car}"
+										target="#{todolistController.todoModifie}" />
+								</p:commandLink>
+
+
+								<p:growl id="messages3" />
+								<p:commandButton  class="form-btn semibold"
+									actionListener="#{todolistController.supprimerToDo(car)}"
+									update="messages3" icon="fas fa-trash">
+									<p:confirm header="Confirmation"
+										message="Etes vous sûr de vouloir supprimer cette tâche?"
+										icon="ui-icon-alert" />
+								</p:commandButton>
+
+								<p:confirmDialog global="true">
+									<p:commandButton value="oui" type="button"
+										styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+									<p:commandButton value="Non" type="button"
+										styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+
+								</p:confirmDialog>
+
+
+							</p:column>
+
+						</p:dataTable>
+					</p:outputPanel>
+				</p:fieldset>
+
+
+				<p:droppable for="selectedTache2" tolerance="touch"
+					activeStyleClass="ui-state-highlight"
+					datasource="selectedCarsTable" onDrop="handleDrop">
+					<p:ajax listener="#{todolistController.tacheDrop2}"
+						update="dropArea2 selectedCarsTable" />
+				</p:droppable>
+
+			</div>
+
+
+			<p:dialog header="Modifier" widgetVar="dlg2" id="dlg2" modal="true"
+				height="300">
+				<p:outputPanel id="modifier" style="text-align:center;">
+					<p:panelGrid columns="2"
+						rendered="#{not empty todolistController.todoModifie}">
+
+
+						<h:outputLabel id="nomDeLaTacheLabel" value="Nom de la tache :"
+							class="titres" />
+						<h:inputText id="nomTacheTxt"
+							value="#{todolistController.todoModifie.nomTache}" size="40">
+						</h:inputText>
+
+						<h:outputLabel id="personnesConcerneesLabel"
+							value=" Les Personnes en charge :" class="titres" />
+						<h:inputText id="personnesConcerneesTxt"
+							value="#{todolistController.todoModifie.personnesConcernees}"
+							size="40"></h:inputText>
+
+						<h:outputLabel id="dateLimiteLabel"
+							value="La date limite de la tache:" class="titres" />
+						<h:inputText id="dateLimiteTxt"
+							value="#{todolistController.todoModifie.dateLimiteTache}"
+							size="40"/>
+
+						<h:outputLabel id="contenuTacheLabel"
+							value="Description de la tache:" class="titres" />
+						<h:inputTextarea id="contenuTacheTxt"
+							value="#{todolistController.todoModifie.contenuTache}"
+							style="width:310px" />
+
+						<h:outputLabel id="niveauPrioriteLabel"
+							value="Niveaux de priorité :" class="titres" />
+						<h:selectOneMenu id="trlrr"
+							value="#{todolistController.selectedNiveauPriorite}"
+							style="width:310px">
+							<f:selectItems value="#{todolistController.listeNiveauPriorite}"
+								var="nivprio" itemLabel="#{nivprio.nomPriorite}"
+								itemValue="#{nivprio.nomPriorite}" />
+						</h:selectOneMenu>
+
+						<h:outputLabel id="niveauProgressLabel"
+							value="Niveaux de progression :" class="titres" />
+						<h:selectOneMenu id="trlll"
+							value="#{todolistController.selectedProgression}"
+							style="width:310px">
+							<f:selectItems value="#{todolistController.listeProgressionToDo}"
+								var="nivprogress" itemLabel="#{nivprogress.niveauProgression}"
+								itemValue="#{nivprogress.niveauProgression}" />
+						</h:selectOneMenu>
+
+
+					</p:panelGrid>
+					<br />
+					<p:growl id="messages1" />
+					<p:commandButton value="Enregistrer" class="form-btn semibold"
+						actionListener="#{todolistController.modifierTodo}"
+						update="messages1">
+						<p:confirm header="Confirmation"
+							message="Etes vous sûr de vouloir modifier cette tâche?"
+							icon="ui-icon-alert" />
+					</p:commandButton>
+
+					<p:confirmDialog global="true">
+						<p:commandButton value="oui" type="button"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+						<p:commandButton value="Non" type="button"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+
+					</p:confirmDialog>
+
+				</p:outputPanel>
+			</p:dialog>
+
+
+
+			<p:dialog header="Nouvelle Tâche" widgetVar="dlg1" id="dlg1"
+				modal="true" height="300">
+				<p:outputPanel id="new" style="text-align:center;">
+					<p:panelGrid columns="2">
+
+
+						<h:outputLabel id="nomDeLaTache2" value="Nom de la tache :"
+							for="nomTacheTxt2" />
+						<h:inputText id="nomTacheTxt2"
+							value="#{todolistController.todolist.nomTache}" size="40" placeholder="Vérifier prospects">
+						</h:inputText>
+
+						<h:outputLabel id="personnesConcernees2"
+							value=" Les Personnes en charge :" class="titres" />
+						<h:inputText id="personnesConcerneesTxt2"
+							value="#{todolistController.todolist.personnesConcernees}"
+							size="40"></h:inputText>
+
+						<h:outputLabel id="dateLimite2"
+							value="La date limite de la tache:" class="titres" />
+						<h:inputText id="dateLimiteTxt2"
+							value="#{todolistController.todolist.dateLimiteTache}"
+							size="40" />
+
+						<h:outputLabel id="contenuTache2" value="Description de la tache:"
+							class="titres" />
+						<h:inputTextarea id="contenuTacheTxt2"
+							value="#{todolistController.todolist.contenuTache}"
+							style="width:300px" />
+
+						<h:outputLabel id="niveauPriorite2" value="Niveaux de priorité :"
+							class="titres" />
+						<h:selectOneMenu id="trlrr2"
+							value="#{todolistController.selectedNiveauPriorite}"
+							style="width:300px">
+							<f:selectItems value="#{todolistController.listeNiveauPriorite}"
+								var="nivprio" itemLabel="#{nivprio.nomPriorite}"
+								itemValue="#{nivprio.nomPriorite}" />
+						</h:selectOneMenu>
+
+						<h:outputLabel id="niveauProgression"
+							value="Niveaux de progression:" class="titres" />
+						<h:selectOneMenu id="trlpp2"
+							value="#{todolistController.selectedProgression}"
+							style="width:300px">
+							<f:selectItems value="#{todolistController.listeProgressionToDo}"
+								var="nivprogress" itemLabel="#{nivprogress.niveauProgression}"
+								itemValue="#{nivprogress.niveauProgression}" />
+						</h:selectOneMenu>
+					</p:panelGrid>
+					<br />
+					
+					
+					<p:growl id="messages4" />
+								<p:commandButton  value="Enregistrer" class="form-btn semibold"
+									actionListener="#{todolistController.addNewTodo}"
+									update="messages4" icon="fas fa-trash"  immediate="true" ajax="false"><p:resetInput target="dlg1" />
+									<p:confirm header="Confirmation"
+										message="Etes vous sûr de vouloir ajouter cette tâche?"
+										icon="ui-icon-alert" />
+								</p:commandButton>
+
+								<p:confirmDialog global="true">
+									<p:commandButton value="oui" type="button"
+										styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+									<p:commandButton value="Non" type="button"
+										styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+
+								</p:confirmDialog>
+
+
+				</p:outputPanel>
+			</p:dialog>
+
+
+
+			<p:dialog class="widget" header="Détails Tâche" widgetVar="dlg3"
+				id="dlg3" modal="true" height="400" width="400">
+				<p:outputPanel id="detail">
+
+					<p:panelGrid columns="2" class="panelGrid"
+						rendered="#{not empty not empty todolistController.todoModifie}">
+
+						<h:outputLabel id="nomDeLaTacheLabel3" value="Nom de la tache :"
+							class="titres" />
+						<h:outputText id="nomTacheTxt3"
+							value="#{todolistController.todoModifie.nomTache}">
+						</h:outputText>
+
+						<h:outputLabel id="personnesConcerneesLabel3"
+							value=" Les Personnes en charge :" class="titres" />
+						<h:outputText id="personnesConcerneesTxt3"
+							value="#{todolistController.todoModifie.personnesConcernees}"></h:outputText>
+
+						<h:outputLabel id="dateLimiteLabel3"
+							value="La date limite de la tache:" class="titres" />
+						<h:outputText id="dateLimiteTxt3"
+							value="#{todolistController.todoModifie.dateLimiteTache}" />
+						<h:outputLabel id="contenuTacheLabel3"
+							value="Description de la tache:" class="titres" />
+						<h:outputText id="contenuTacheTxt3"
+							value="#{todolistController.todoModifie.contenuTache}" />
+
+						<h:outputLabel id="niveauPrioriteLabel3"
+							value="Niveaux de priorité :" class="titres" />
+
+						<h:outputText
+							value="#{todolistController.todoModifie.niveauxPriorite.nomPriorite}" />
+
+
+						<h:outputLabel id="niveauProgressLabel3"
+							value="Niveaux de progression :" class="titres" />
+						<h:outputText
+							value="#{todolistController.todoModifie.niveauProgress.niveauProgression}" />
+
+
+
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
+			<br />
+			<br />
+			<center>
+				<p:commandLink update=":form:new" oncomplete="PF('dlg1').show()"
+					title="Nouvelle Tâche">
+					<p:commandButton value="Nouvelle Tâche" icon="fas fa-plus-circle"></p:commandButton>
+				</p:commandLink>
+			</center>
+<br />
+		</h:form>
+
+
+
+	</ui:define>
+</ui:composition>

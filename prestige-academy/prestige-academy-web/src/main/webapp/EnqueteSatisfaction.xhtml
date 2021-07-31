@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/defaultEntreprise.xhtml">
+
+
+	<ui:define name="content">
+	
+			<h1 id="titrePageEvent">Enquête de Satisfaction</h1>
+			<br/>
+			<br/>
+			<br/>
+				<hr class="style-six"></hr>
+			
+
+		<h:form var="questionnaire">
+			<div id="questionnaire">
+
+
+				<h:panelGrid columns="1">
+
+					<div class="questions">
+						<h:outputLabel class="divquestions"
+							value="1-Comment évaluez-vous les échanges avec l'École (rapidité, efficacité...)? :"
+							for="nomStagiaireTxt" />
+						<h:panelGrid columns="2" style="margin-bottom:10px"
+							cellpadding="5">
+							<h:outputText value="Note sur 5:" />
+							<p:selectOneButton value="#{enqueteStatController.question1}">
+								<f:selectItem itemLabel="1/5- Pas du tout satisfaisant"
+									itemValue="1" />
+								<f:selectItem itemLabel="2/5- Peu satisfaisant" itemValue="2" />
+								<f:selectItem itemLabel="3/5- À améliorer" itemValue="3" />
+								<f:selectItem itemLabel="4/5- Satisfaisant" itemValue="4" />
+								<f:selectItem itemLabel="5/5-Très satisfaisant" itemValue="5" />
+							</p:selectOneButton>
+						</h:panelGrid>
+					</div>
+
+
+					<div class="questions">
+						<h:outputLabel class="divquestions"
+							value="2-Comment évaluez-vous le niveau des Stagiaires qui vous sont présentés ? :"
+							for="nomStagiaireTxt" />
+						<h:panelGrid columns="2" style="margin-bottom:10px"
+							cellpadding="5">
+							<h:outputText value="Note sur 5:" />
+							<p:selectOneButton value="#{enqueteStatController.question2}">
+								<f:selectItem itemLabel="1/5- Pas du tout satisfaisant"
+									itemValue="1" />
+								<f:selectItem itemLabel="2/5- Peu satisfaisant" itemValue="2" />
+								<f:selectItem itemLabel="3/5- À améliorer" itemValue="3" />
+								<f:selectItem itemLabel="4/5- Satisfaisant" itemValue="4" />
+								<f:selectItem itemLabel="5/5-Très satisfaisant" itemValue="5" />
+							</p:selectOneButton>
+						</h:panelGrid>
+					</div>
+
+					<div class="questions">
+						<h:outputLabel class="divquestions"
+							value="3-Comment évaluez-vous la platforme CRM mise à votre disposition (rapidité, efficacité, utilité...)? :"
+							for="nomStagiaireTxt" />
+						<h:panelGrid columns="2" style="margin-bottom:10px"
+							cellpadding="5">
+							<h:outputText value="Note sur 5:" />
+							<p:selectOneButton value="#{enqueteStatController.question3}">
+								<f:selectItem itemLabel="1/5- Pas du tout satisfaisant"
+									itemValue="1" />
+								<f:selectItem itemLabel="2/5- Peu satisfaisant" itemValue="2" />
+								<f:selectItem itemLabel="3/5- À améliorer" itemValue="3" />
+								<f:selectItem itemLabel="4/5- Satisfaisant" itemValue="4" />
+								<f:selectItem itemLabel="5/5-Très satisfaisant" itemValue="5" />
+							</p:selectOneButton>
+						</h:panelGrid>
+					</div>
+
+					<div class="questions">
+						<h:outputLabel class="divquestions"
+							value="4-Comment évaluez-vous les échanges avec l'Ecole (rapidité, efficacité...)? :"
+							for="nomStagiaireTxt" />
+						<h:panelGrid columns="2" style="margin-bottom:10px"
+							cellpadding="5">
+							<h:outputText value="Note sur 5:" />
+							<p:selectOneButton value="#{enqueteStatController.question4}">
+								<f:selectItem itemLabel="1/5- Pas du tout satisfaisant"
+									itemValue="1" />
+								<f:selectItem itemLabel="2/5- Peu satisfaisant" itemValue="2" />
+								<f:selectItem itemLabel="3/5- À améliorer" itemValue="3" />
+								<f:selectItem itemLabel="4/5- Satisfaisant" itemValue="4" />
+								<f:selectItem itemLabel="5/5-Très satisfaisant" itemValue="5" />
+							</p:selectOneButton>
+						</h:panelGrid>
+					</div>
+
+					<div class="questions">
+						<h:outputLabel class="divquestions"
+							value="5-Etes-vous globalement satisfait de votre expérience avec notre École de reconversion? :"
+							for="nomStagiaireTxt" />
+						<h:panelGrid columns="2" style="margin-bottom:10px"
+							cellpadding="5">
+							<h:outputText value="Note sur 5:" />
+							<p:selectOneButton value="#{enqueteStatController.question5}">
+								<f:selectItem itemLabel="1/5- Pas du tout satisfaisant"
+									itemValue="1" />
+								<f:selectItem itemLabel="2/5- Peu satisfaisant" itemValue="2" />
+								<f:selectItem itemLabel="3/5- À améliorer" itemValue="3" />
+								<f:selectItem itemLabel="4/5- Satisfaisant" itemValue="4" />
+								<f:selectItem itemLabel="5/5-Très satisfaisant" itemValue="5" />
+							</p:selectOneButton>
+						</h:panelGrid>
+					</div>
+
+					<div class="questions">
+						<h:outputLabel class="divquestions"
+							value="6-Recommanderiez-vous l'École a un futur Stagiaire ou à un Partenaire? :"
+							for="nomStagiaireTxt" />
+						<h:panelGrid columns="2" style="margin-bottom:10px"
+							cellpadding="5">
+							<h:outputText value="Note sur 5:" />
+							<p:selectOneButton value="#{enqueteStatController.question6}">
+								<f:selectItem itemLabel="1/5- Pas du tout" itemValue="1" />
+								<f:selectItem itemLabel="2/5- Peu de chance" itemValue="2" />
+								<f:selectItem itemLabel="3/5- Pourquoi pas" itemValue="3" />
+								<f:selectItem itemLabel="4/5- Oui" itemValue="4" />
+								<f:selectItem itemLabel="5/5-Oui, absolument" itemValue="5" />
+							</p:selectOneButton>
+						</h:panelGrid>
+					</div>
+					<br />
+					</h:panelGrid>
+			</div>
+			<center>
+			<br />
+			<br />
+			<p:commandButton value="Soumettre"
+				action="#{enqueteStatController.enregistrerEnquete}"></p:commandButton>
+			</center>
+
+			
+		</h:form>
+
+
+	</ui:define>
+</ui:composition>

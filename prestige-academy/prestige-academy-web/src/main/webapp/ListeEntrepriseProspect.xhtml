@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/templates/default.xhtml">
+
+    <ui:define name="content">
+        <br/>
+        <h1 id="titrePage">Prospects</h1><p:commandButton id="retour" value="Retour" onclick="window.history.back();"/>
+        <div id="table-wrapper">
+            <h:form>
+                <p:dataTable var="ligneEntreprise" 
+                             value="#{prospectGererController.entrepriseList}" border="2"
+                             class="table" >
+                    <p:column>
+                        <f:facet name="header">Nom de l'entreprise</f:facet>
+                        #{ligneEntreprise.nomEntreprise}
+                        <p:remoteCommand name="editRowCommand" id="editRowCommand" action="ficheStag"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">Adresse</f:facet>
+                        #{ligneEntreprise.adresse}
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">Ville</f:facet>
+                        #{ligneEntreprise.ville}
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">Email</f:facet>
+                        #{ligneEntreprise.mailEntreprise}
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">Téléphone</f:facet>
+                        #{ligneEntreprise.telephoneEntreprise}
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">Statut</f:facet>
+                        #{ligneEntreprise.statut.nomStatut}
+                    </p:column>
+
+
+                    <p:column>
+                        <p:commandButton value="Modifier"
+                                         actionListener="#{prospectGererController.chergerEntreprise(ligneEntreprise)}"
+                                         action="SaisieEntrepriseProspect"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

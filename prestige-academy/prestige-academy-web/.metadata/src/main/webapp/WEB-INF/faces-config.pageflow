@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf159156783161672" configfile="/prestige-academy-web/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="FicheSommelier" x="338" y="360" id="pf159156785640573" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf159156785640574" path="/Sommelier.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="FicheStagiaire.xhtml" x="554" y="765" id="pf159156785640575" referenceLink="//@navigationRule.8/@navigationCase.0/@toViewId|" outlinks="pf159156785640576" inlinks="pf159156785640574 pf159156785640577 pf159156785640578 pf159156785640579 pf159156785640580" path="/FicheStagiaire.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="FicheGerantHotel" x="122" y="562" id="pf159156785640582" referenceLink="//@navigationRule.5/@fromViewId|" outlinks="pf159156785640577 pf159156785640583" path="/GerantHotel.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="FicheMaitreHotel" x="122" y="946" id="pf159156785640584" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf159156785640578 pf159156785640585" path="/MaitreHotel.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="FicheChefRang" x="122" y="1330" id="pf159156785640586" referenceLink="//@navigationRule.7/@fromViewId|" outlinks="pf159156785640579 pf159156785640587" path="/ChefRang.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="FicheModifiee" x="338" y="765" id="pf159156785640588" referenceLink="//@navigationRule.8/@fromViewId|" outlinks="pf159156785640580" inlinks="pf159156785640576 pf159156785640583 pf159156785640585 pf159156785640587" path="/FicheStagiaireModification.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="InterfaceConnexion.xhtml" x="122" y="1714" id="pf159156785640589" referenceLink="//@navigationRule.11/@fromViewId|" outlinks="pf159156785640590 pf159156785640591 pf159156785640592" path="/InterfaceConnexion.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ConnexionEcole.xhtml" x="338" y="1330" id="pf159156785640593" referenceLink="//@navigationRule.9/@navigationCase.0/@toViewId|" inlinks="pf159156785640590" path="/ConnexionEcole.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ConnexionEntreprise.xhtml" x="338" y="1714" id="pf159156785640594" referenceLink="//@navigationRule.10/@navigationCase.0/@toViewId|" inlinks="pf159156785640591" path="/ConnexionEntreprise.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ConnexionStagiaire.xhtml" x="338" y="2098" id="pf159156785640595" referenceLink="//@navigationRule.11/@navigationCase.0/@toViewId|" inlinks="pf159156785640592" path="/ConnexionStagiaire.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ListEvents.xhtml" x="338" y="2482" id="pf159156785640596" referenceLink="//@navigationRule.14/@fromViewId|" outlinks="pf159156785640597 pf159156785640598" inlinks="pf1591567856405103" path="/ListEvents.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="FicheEvenement.xhtml" x="122" y="2482" id="pf1591567856405105" referenceLink="//@navigationRule.13/@fromViewId|" outlinks="pf1591567856405103" inlinks="pf159156785640597" path="/FicheEvenement.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="FicheEvenementModif.xhtml" x="554" y="2482" id="pf1591567856405106" referenceLink="//@navigationRule.14/@navigationCase.0/@toViewId|" inlinks="pf159156785640598" path="/FicheEvenementModif.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ListeEntreprise" x="122" y="3058" id="pf1591567856405107" referenceLink="//@navigationRule.16/@fromViewId|" outlinks="pf1591567856405108 pf1591700482948120" path="/ListeEntreprises.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="formulaireSaisieEntreprise.xhtml" x="338" y="2866" id="pf1591567856406109" referenceLink="//@navigationRule.15/@navigationCase.0/@toViewId|" inlinks="pf1591567856405108" path="/FicheModificationEntreprise.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ListeEntrepriseProspect" x="122" y="3646" id="pf1591567856406110" referenceLink="//@navigationRule.17/@fromViewId|" outlinks="pf1591567856406111" path="/ListeEntrepriseProspect.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="saisieProspectEntreprise.xhtml" x="338" y="3646" id="pf1591567856406112" referenceLink="//@navigationRule.17/@navigationCase.0/@toViewId|" inlinks="pf1591567856406111" path="/saisieProspectEntreprise.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ficheCompteRendu.xhtml" x="122" y="178" id="pf1591567856406113" referenceLink="//@navigationRule.21/@navigationCase.0/@toViewId|" path="/ficheCompteRendu.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ficheCompteRendutModif.xhtml" x="122" y="4039" id="pf1591567856406114" referenceLink="//@navigationRule.22/@navigationCase.0/@toViewId|" path="/ficheCompteRendutModif.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ListeOrganismes.xhtml" x="122" y="4432" id="pf1591567926448115" referenceLink="//@navigationRule.19/@fromViewId|" outlinks="pf1591567926448116 pf1591696348896118" path="/ListeOrganismes.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ficheModificationOrganisme.xhtml" x="338" y="4240" id="pf1591567926448117" referenceLink="//@navigationRule.18/@navigationCase.0/@toViewId|" inlinks="pf1591567926448116" path="/ficheModificationOrganisme.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="detailsOrganisme.xhtml" x="338" y="4624" id="pf1591696348896119" referenceLink="//@navigationRule.19/@navigationCase.0/@toViewId|" inlinks="pf1591696348896118" path="/detailsOrganisme.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="FicheEntreprise2.xhtml" x="338" y="3250" id="pf1591700482948121" referenceLink="//@navigationRule.16/@navigationCase.0/@toViewId|" inlinks="pf1591700482948120" path="/FicheEntreprise.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="Dashbord.xhtml" id="pf15918380350170" referenceLink="//@navigationRule.20/@navigationCase.0/@toViewId|" outlinks="pf15918380350171" inlinks="pf15918380350171" path="/Dashbord.xhtml"/>
+  <links id="pf159156785640574" target="pf159156785640575" source="pf159156785640573" outcome="ficheStag"/>
+  <links id="pf159156785640577" target="pf159156785640575" source="pf159156785640582" outcome="ficheStag1"/>
+  <links id="pf159156785640578" target="pf159156785640575" source="pf159156785640584" outcome="ficheStag2"/>
+  <links id="pf159156785640579" target="pf159156785640575" source="pf159156785640586" outcome="ficheStag3"/>
+  <links id="pf159156785640576" target="pf159156785640588" source="pf159156785640575" outcome="ficheStagModif"/>
+  <links id="pf159156785640583" target="pf159156785640588" source="pf159156785640582" outcome="ficheStagModif1"/>
+  <links id="pf159156785640585" target="pf159156785640588" source="pf159156785640584" outcome="ficheStagModif2"/>
+  <links id="pf159156785640587" target="pf159156785640588" source="pf159156785640586" outcome="ficheStagModif3"/>
+  <links id="pf159156785640580" target="pf159156785640575" source="pf159156785640588" outcome="ficheModifiee"/>
+  <links id="pf159156785640590" target="pf159156785640593" source="pf159156785640589" outcome="connexionEcole"/>
+  <links id="pf159156785640591" target="pf159156785640594" source="pf159156785640589" outcome="connexionEntreprise"/>
+  <links id="pf159156785640592" target="pf159156785640595" source="pf159156785640589" outcome="connexionStagiaire"/>
+  <links id="pf159156785640597" target="pf1591567856405105" source="pf159156785640596" outcome="ficheEvenement"/>
+  <links id="pf1591567856405103" target="pf159156785640596" source="pf1591567856405105" outcome="listEvenement"/>
+  <links id="pf159156785640598" target="pf1591567856405106" source="pf159156785640596" outcome="ficheEvenementModif"/>
+  <links id="pf1591567856405108" target="pf1591567856406109" source="pf1591567856405107" outcome="modificationEntreprise"/>
+  <links id="pf1591567856406111" target="pf1591567856406112" source="pf1591567856406110" outcome="SaisieEntrepriseProspect"/>
+  <links id="pf1591567926448116" target="pf1591567926448117" source="pf1591567926448115" outcome="ficheOrgaModif"/>
+  <links id="pf1591696348896118" target="pf1591696348896119" source="pf1591567926448115" outcome="detailsOrganisme"/>
+  <links id="pf1591700482948120" target="pf1591700482948121" source="pf1591567856405107" outcome="AffichageEntreprise"/>
+  <links id="pf15918380350171" target="pf15918380350170" source="pf15918380350170" outcome="dashbord"/>
+</pageflow:Pageflow>

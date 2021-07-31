@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<body>
+	<ui:composition>
+		<div class="vertical-nav" id="sidebar">
+			<div class="py-0 px-1 mb-4">
+				<h:graphicImage library="images" name="logo.png" width="170"
+					height="170" class="rounded mx-auto d-block" />
+				<p class="text-gray font-blue text-uppercase px-28 normal pb-4 mb-0"
+					align="center">CRM Application</p>
+			</div>
+			<p
+				class="text-gray font-blue text-uppercase px-10 normal pb-4 mb-0 ml-4">Menu</p>
+
+			<ul class="nav flex-column mb-0">
+				<li class="nav-item"><a href="Dashbord.xhtml"
+					class="nav-link text-dark font-weight-normal"> <span
+						class="fa fa-home mr-2 ml-4"></span> Home
+				</a></li>
+				<li class="nav-item"><a href="#"
+					class="nav-link text-dark font-weight-normal"> <span
+						class="fa fa-handshake mr-3 ml-4"></span>Partenaires
+				</a>
+					<ul class="sous-item">
+						<a class="dropdown-item" href="ListeEntreprises.xhtml">Entreprises</a>
+						<a class="dropdown-item" href="ListeOrganismes.xhtml">Organismes
+							de Financement</a>
+						<a class="dropdown-item" href="ListeEntrepriseProspect.xhtml">Prospect</a>
+					</ul></li>
+				<li class="deroulant"><a
+					class="nav-link  text-dark font-weight-normal" href="#"><span
+						class="fa fa-user-graduate mr-3 ml-4"></span>Stagiaires</a>
+					<ul class="sous-item">
+						<a class="dropdown-item" href="Sommelier.xhtml">Sommelier</a>
+						<a class="dropdown-item" href="ChefRang.xhtml">Chef de Rang</a>
+						<a class="dropdown-item" href="GerantHotel.xhtml">Gérant
+							d'Hôtel</a>
+						<a class="dropdown-item" href="MaitreHotel.xhtml">Maitre
+							d'Hôtel</a>
+					</ul></li>
+
+				<li class="nav-item"><a href="#"
+					class="nav-link text-dark font-weight-normal"> <span
+						class="fa fa-envelope mr-3 ml-4"></span>Contact
+				</a>
+					<ul class="sous-item">
+						<a class="dropdown-item" href="BoiteMail.xhtml">Boite Mail</a>
+						<a class="dropdown-item" href="#">NewsLetters</a>
+					</ul></li>
+			
+			<li class="nav-item"><a href="ListEvents.xhtml"
+				class="nav-link text-dark font-weight-normal"> <span
+					class="fa fa-file mr-3 ml-4"></span>Planning
+			</a></li>
+
+			<li class="nav-item"><a href="ToDoList.xhtml"
+				class="nav-link text-dark font-weight-normal"> <span
+					class="fa fa-list-ul mr-2 ml-4"></span>ToDoList
+			</a></li>
+			<li class="nav-item"><a href="#"
+				class="nav-link text-dark font-weight-normal"> <span
+					class="fa fa-file mr-3 ml-4"></span>Documents
+			</a></li>
+			<li class="nav-item"><a href="Financement.xhtml"
+				class="nav-link text-dark font-weight-normal"> <span
+					class="fa fa-euro-sign mr-3 ml-4"></span>Financement
+			</a></li>
+			<li class="nav-item"><a href="#"
+				class="nav-link text-dark font-weight-normal"> <span
+					class="fa fa-chart-area mr-2 ml-4"></span>Statistiques/Objectifs
+			</a></li>
+		</ul>
+
+			<div class="icon-bar">
+				<a href="#" id="icon-reseaux"><span
+					class="fab fa-facebook-square mr-2 ml-4"></span></a> <a href="#"
+					id="icon-reseaux"><span class="fab fa-linkedin mr-2 ml-4"></span></a>
+				<a href="#" id="icon-reseaux"><span
+					class="fab fa-twitter mr-2 ml-4"></span></a> <a href="#"
+					id="icon-reseaux"><span class="fab fa-instagram mr-2 ml-4"></span></a>
+
+			</div>
+
+		</div>
+
+
+	</ui:composition>
+</body>
+</html>

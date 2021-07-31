@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui" 
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+		<br />
+		<h1 id="titrePageSom">Promotion Sommelier</h1><p:commandButton id="retourSom" value="Retour" onclick="window.history.back();"/>
+		<hr class="style-six"></hr>
+		<div id="table-wrapper">
+			
+				<p:dataTable var="ligneSommeliers" 
+					data-href="http://tutorialsplane.com"
+					value="#{stagiairesController.listeSommeliers}" border="2"
+					class="table" selectionMode="single"
+					rowKey="#{ligneSommeliers.stagiaireID}"
+					selection="#{stagiairesController.stagiaireSelected}"
+					scrollable="true" action="ficheStag">
+					<p:ajax event="rowSelect"
+						listener="#{stagiairesController.chargerLeStagiaire}"
+						oncomplete="editRowCommand()" immediate="true" />
+					<p:column>
+						<f:facet name="header">Nom</f:facet>
+						#{ligneSommeliers.nomStagiaire}
+						<p:remoteCommand name="editRowCommand" id="editRowCommand"
+							action="ficheStag" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">Prénom</f:facet>
+						#{ligneSommeliers.prenomStagiaire}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Date de naissance</f:facet>
+						#{ligneSommeliers.dateAnniversaireStagiaire}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Diplome</f:facet>
+						#{ligneSommeliers.diplome}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Langues</f:facet>
+						#{ligneSommeliers.languesParlees}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Statut Financement</f:facet>
+						#{ligneSommeliers.statutFinancement.nomFinancement}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Statut Recrutement</f:facet>
+						#{ligneSommeliers.statutRecrutement.nomStatutRecrutement}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Ville</f:facet>
+						#{ligneSommeliers.ville}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Promotion</f:facet>
+						#{ligneSommeliers.promotion.nomPromotion}
+					</p:column>
+				</p:dataTable>
+		</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

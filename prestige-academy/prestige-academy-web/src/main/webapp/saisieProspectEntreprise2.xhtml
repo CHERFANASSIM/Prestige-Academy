@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/templates/default.xhtml">
+    <ui:define name="content">
+
+        <div id="global">
+
+            <br/> <br/>
+            <h1 id="titrePage">Modifier la Fiche Entreprise </h1>
+            <hr class="style-six"></hr>
+            <br/>
+            <div id="divleft">
+                <h:form id="form1" var="entrepriseModifie">
+                    <div id="topdivleft">
+                        <div id="photoStag">
+
+                            <h:graphicImage
+                                    value="#{prospectGererController2.entrepriseProspect.logoUrl}"
+                                    height="216" width="280"/>
+
+                        </div>
+
+                        <div id="infosPerso">
+
+                            <h:panelGrid columns="2">
+                                <h:outputLabel id="nomEntrepriseLabel" value="Nom :"
+                                               for="nomEntrepriseTxt"/>
+                                <h:inputText id="nomEntrepriseTxt"
+                                             value="#{prospectGererController2.entrepriseProspect.nomEntreprise}"
+                                             size="15"></h:inputText>
+
+
+                                <h:outputLabel id="rueAdressePersLabel" value="Rue :"
+                                               for="rueAdressePersTxt"/>
+                                <h:inputText id="rueAdressePersTxt"
+                                             value="#{prospectGererController2.entrepriseProspect.adresse}"
+                                             size="15"></h:inputText>
+
+                                <h:outputLabel id="codePostalAdressePersLabel"
+                                               value="Code postal :" for="codePostalAdresseTxt"/>
+                                <h:inputText id="codePostalAdresseTxt"
+                                             value="#{prospectGererController2.entrepriseProspect.ville}"
+                                             size="15"></h:inputText>
+
+                                <h:outputLabel id="villeAdressePersLabel" value="Ville :"
+                                               for="villeAdresseTxt"/>
+                                <h:inputText id="villeAdresseTxt"
+                                             value="#{prospectGererController2.entrepriseProspect.codePostale}"
+                                             size="15"></h:inputText>
+
+                                <h:outputLabel id="paysersLabel" value="Pays :"
+                                               for="paysTxt"/>
+                                <h:inputText id="paysTxt"
+                                             value="#{prospectGererController2.entrepriseProspect.pays}"
+                                             size="15"></h:inputText>
+                            </h:panelGrid>
+
+                        </div>
+                    </div>
+
+                    <div id="autresInfos">
+                        <p id="titresP">Coordonnées</p>
+
+                        <h:panelGrid columns="2">
+                            <h:outputLabel id="telephoneLabel" value="Téléphone :"
+                                           for="telephoneTxt"/>
+                            <h:inputText id="telephoneTxt"
+                                         value="#{prospectGererController2.entrepriseProspect.telephoneEntreprise}"
+                                         size="30"></h:inputText>
+
+                            <h:outputLabel id="emailLabel" value="Email :"
+                                           for="emailTxt"/>
+                            <h:inputText id="emailTxt"
+                                         value="#{prospectGererController2.entrepriseProspect.mailEntreprise}"
+                                         size="30"></h:inputText>
+
+                            <h:outputLabel id="interlocuteurLabel" value="Interlocuteur :"
+                                           for="interlocuteurTxt"/>
+                            <h:inputText id="interlocuteurTxt"
+                                         value="#{prospectGererController2.entrepriseProspect.interlocuteurs}"
+                                         size="30"></h:inputText>
+
+                        </h:panelGrid>
+
+                        <br/>
+
+                        <br/>
+
+                        <p:commandButton value="Enregistrer"
+                                         action="#{entreprisesController2.upadteEntreprise()}"/>
+
+                    </div>
+                </h:form>
+            </div>
+
+            <div id="divright">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item"><a class="nav-link active"
+                                            id="onglet-tab" data-toggle="tab" href="#interactions" role="tab"
+                                            aria-controls="home" aria-selected="true">Intéractions
+                        récentes</a></li>
+                    <li class="nav-item"><a class="nav-link" id="onglet-tab"
+                                            data-toggle="tab" href="#contacter" role="tab"
+                                            aria-controls="profile" aria-selected="false">Envoyer un Mail</a></li>
+                    <li class="nav-item"><a class="nav-link" id="onglet-tab"
+                                            data-toggle="tab" href="#documents" role="tab"
+                                            aria-controls="contact" aria-selected="false">Documents</a></li>
+                    <li class="nav-item"><a class="nav-link" id="onglet-tab"
+                                            data-toggle="tab" href="#abscences" role="tab"
+                                            aria-controls="contact" aria-selected="false">Absences</a></li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+
+                    <div class="tab-pane show active" id="interactions" role="tabpanel"
+                         aria-labelledby="profile-tab">
+                        <p>Les intéractions :</p>
+                        <h:form id="form">
+                            <f:facet name="header">Dernières intéractions</f:facet>
+                            <p:dataTable
+                                    class="gaucheliste table table-bordered table-condensed table-striped table-hover"
+                                    var="ligneGererProspect"
+                                    value="#{prospectGererController2.gererProspects}">
+
+                                <p:column>
+                                    <f:facet name="header">Date de contact</f:facet>
+                                    #{ligneGererProspect.dateDeContact}
+                                </p:column>
+
+                                <p:column>
+                                    <f:facet name="header">Description</f:facet>
+                                    #{ligneGererProspect.commentaire}
+
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">Statut</f:facet>
+                                    #{ligneGererProspect.statut}
+                                </p:column>
+                            </p:dataTable>
+                            <br/>
+                            <h:panelGrid>
+                                <h:outputLabel id="descLabel" value="Commentaire :"/>
+                                <h:inputText placeholder="CommentaireFiche"
+                                             value="#{prospectGererController2.commentaireFiche}"
+                                             size="50"></h:inputText>
+
+                                <p:commandButton value="Premier Contact"
+                                                 action="#{prospectGererController2.gererProspectionPremierContact}"
+                                                 disabled="#{prospectGererController2.premierContact eq false}">
+                                    <f:ajax render="@form"></f:ajax>
+
+                                </p:commandButton>
+
+                                <p:commandButton value="En Négociation"
+                                                 action="#{prospectGererController2.gererProspectionNegoTele}"
+                                                 disabled="#{prospectGererController2.enNegociation eq false}">
+                                    <f:ajax render="@form"></f:ajax>
+                                </p:commandButton>
+
+
+                                <p:commandButton value="Validation"
+                                                 action="#{prospectGererController2.gererProspectionConfirmationDirecteur}"
+                                                 disabled="#{prospectGererController2.validation eq false}">
+                                    <f:ajax render="@form"></f:ajax>
+                                </p:commandButton>
+
+                                <p:commandButton value="Archivé"
+                                                 action="#{prospectGererController2.gererProspectionEtapeArchive}"
+                                                 disabled="#{prospectGererController2.archive eq false}">
+                                    <f:ajax render="@form"></f:ajax>
+                                </p:commandButton>
+
+                                <p:commandButton value="RDV pour signature"
+                                                 action="#{prospectGererController2.gererProspectionRDV}"
+                                                 disabled="#{prospectGererController2.rdv eq false}">
+                                    <f:ajax render="@form"></f:ajax>
+                                </p:commandButton>
+
+                                <p:commandButton value="Partenaire"
+                                                 action="#{prospectGererController2.gererProspectionEtapePartenaire}"
+                                                 disabled="#{prospectGererController2.rdv eq false}">
+                                    <f:ajax render="@form"></f:ajax>
+                                </p:commandButton>
+
+                                <p:steps id="prospectionsteps" >
+                                    <p:menuitem value="Premier Contact" update=":form1:prospectionsteps"
+                                                actionListener="#{prospectGererController2.premierContact}"
+                                                disabled="#{prospectGererController2.premierContact eq false}"/>
+                                    <p:menuitem value="En Négociation" update=":form1:prospectionsteps"
+                                                actionListener="#{prospectGererController2.enNegociation}"
+                                                disabled="#{prospectGererController2.enNegociation eq false}"/>
+                                    <p:menuitem value="Validation" update=":form1:prospectionsteps"
+                                                disabled="#{prospectGererController2.validation eq false}"/>
+                                    <p:menuitem value="Archivé" update="@form"
+                                                disabled="#{prospectGererController2.archive eq false}"/>
+                                    <p:menuitem value="RDV pour signature " update="@form"
+                                                disabled="#{prospectGererController2.rdv eq false}"/>
+                                    <p:menuitem value="Partenaire " update="@form"
+                                                disabled="#{prospectGererController2.rdv eq false}"/>
+                                </p:steps>
+                            </h:panelGrid>
+                        </h:form>
+
+                    </div>
+
+
+                    <div class="tab-pane" id="contacter" role="tabpanel"
+                         aria-labelledby="profile-tab">
+
+
+                        <div class="inner contact">
+                            <!-- Form Area -->
+                            <div class="contact-form1">
+                                <!-- Form -->
+                                <h:form id="contact-us" method="post">
+                                    <!-- Left Inputs -->
+                                    <div class="col-xs-6 wow animated slideInLeft"
+                                         data-wow-delay=".5s">
+
+
+                                        <br/>
+
+                                        <h:outputLabel value="À :"/>
+                                        <br/>
+                                        <h:inputText type="email" name="mail" id="mail"
+                                                     required="required" class="form" placeholder="Email"
+                                                     value="#{selectedMailTo}"/>
+                                        <br/>
+                                        <h:outputLabel value="Objet :"/>
+                                        <br/>
+                                        <h:inputText type="text" name="subject" id="subject"
+                                                     required="required" class="form" placeholder="Subject"
+                                                     value="#{selectedObject}"/>
+                                        <br/>
+                                        <h:outputLabel value="Pièce Jointe :"/>
+                                        <br/>
+                                        <h:inputText type="text" name="name" id="name"
+                                                     required="required" class="form" placeholder="To"/>
+
+                                    </div>
+
+                                    <div class="col-xs-6 wow animated slideInRight"
+                                         data-wow-delay=".5s">
+
+                                        <h:outputLabel value="Message :"/>
+                                        <br/>
+                                        <h:inputText name="message" id="message" class="form textarea"
+                                                     placeholder="Message" value="#{selectedContent}"/>
+                                    </div>
+
+                                    <div class="relative fullwidth col-xs-12">
+                                        <!-- Send Button -->
+                                        <h:commandButton type="submit" class="form-btn semibold"
+                                                         value="Envoyer"
+                                                         action="#{mailController.chargerInfosMail(selectedMailTo,selectedObject,selectedContent)}"/>
+
+                                    </div>
+                                    <h:messages styleClass="messages" errorClass="invalid"
+                                                infoClass="valid" warnClass="warning" globalOnly="true"/>
+                                </h:form>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="tab-pane" id="documents" role="tabpanel"
+                         aria-labelledby="contact-tab">
+                        <br/>
+                        <div id="docs">
+                            <p id="titresP2">CV</p>
+                        </div>
+
+                        <div id="docs">
+                            <p id="titresP2">CONTRATS</p>
+                        </div>
+
+                        <div id="docs">
+                            <p id="titresP2">DEVIS/FACTURES</p>
+                        </div>
+
+                        <div id="docs">
+                            <p id="titresP2">AUTRES DOCUMENTS</p>
+                        </div>
+                    </div>
+
+
+                    <div class="tab-pane" id="abscences" role="tabpanel"
+                         aria-labelledby="profile-tab">Veuillez choisir une date
+                        d'abscence de l'élève :
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>

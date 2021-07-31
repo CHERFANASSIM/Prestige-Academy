@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default2.xhtml">
+
+	<ui:define name="content">
+		<h:form id="form">
+		<h1 id="titrePage">Liste des Organismes</h1> <p:commandButton id="retour" value="Retour" onclick="window.history.back();"/>
+	<br/>
+		<hr class="style-six"></hr>
+		
+		
+		<div id="table-wrapper">
+				<p:dataTable var="ligneOrganisme"
+					value="#{organismesController.listeOrganismes}" border="1"
+					class="table">
+
+					<p:column>
+						<f:facet name="header">Nom de l'organisme</f:facet>
+				#{ligneOrganisme.nomOrganismeFinancement}
+			</p:column>
+					<p:column>
+						<f:facet name="header">Adresse</f:facet>
+				#{ligneOrganisme.adresse}"
+			</p:column>
+					<p:column>
+						<f:facet name="header">Ville</f:facet>
+				#{ligneOrganisme.ville}
+			</p:column>
+					<p:column>
+						<f:facet name="header">Email</f:facet>
+				#{ligneOrganisme.mailOrganismeFinancement}
+			</p:column>
+					<p:column>
+						<f:facet name="header">Télephone</f:facet>
+				#{ligneOrganisme.telephoneOrganismeFinancement}
+			</p:column>
+					<p:column>
+						<f:facet name="header">Type de finencement</f:facet>
+				#{ligneOrganisme.typeFinancement.nomTypeFinancement}
+			</p:column>
+					<p:column>
+						<f:facet name="header">Actions</f:facet>
+
+						<p:commandLink update=":form:modifier"
+							oncomplete="PF('dlg2').show()" title="Modifier">
+							<p:commandButton icon="fas fa-edit"></p:commandButton>
+							<f:setPropertyActionListener value="#{ligneOrganisme}"
+								target="#{organismesController.organismeFinancementModifie}" />
+						</p:commandLink>
+
+
+						<p:commandLink update=":form:detail"
+							oncomplete="PF('dlg1').show()" title="Voir">
+							<p:commandButton icon="fas fa-search"></p:commandButton>
+							<f:setPropertyActionListener value="#{ligneOrganisme}"
+								target="#{organismesController.organismeFinancementModifie}" />
+						</p:commandLink>
+
+					</p:column>
+				</p:dataTable>
+
+
+
+
+
+				<p:dialog class="widget" header="Fiche Organisme" widgetVar="dlg1"
+					id="dlg1" modal="true" height="700" width="850">
+					<p:outputPanel id="detail">
+
+						<p:panelGrid columns="3" class="panelGrid"
+							rendered="#{not empty organismesController.organismeFinancementModifie}">
+
+							<h:outputText value=" " />
+							<p:graphicImage align="right"
+								value="#{organismesController.organismeFinancementModifie.logoUrlOrga}" />
+							<h:outputText value=" " />
+
+
+							<h:outputText value="Nom:" class="titres" />
+							<h:outputText
+								value="#{organismesController.organismeFinancementModifie.nomOrganismeFinancement}" />
+							<br />
+							<h:outputText value="Interlocuteur:" class="titres" />
+							<h:outputText
+								value="#{organismesController.organismeFinancementModifie.interlocuteursOrganismeFinancement}" />
+							<br />
+							<h:outputText value="Adresse :" class="titres" />
+							<h:outputText
+								value="#{organismesController.organismeFinancementModifie.adresse} #{organisme.ville} #{organisme.codePostale}" />
+							<br />
+							<h:outputText value="Mail :" class="titres" />
+							<h:outputText
+								value="#{organismesController.organismeFinancementModifie.mailOrganismeFinancement}" />
+							<br />
+							<h:outputText value="Téléphone :" class="titres" />
+							<h:outputText
+								value="#{organismesController.organismeFinancementModifie.telephoneOrganismeFinancement}" />
+							<br />
+							<h:outputText value="Description" class="titres" />
+							<h:outputText
+								value="#{organismesController.organismeFinancementModifie.descriptionOrganismeFinancement}" />
+							<br />
+							<h:outputText value="Type de Financement" class="titres" />
+							<h:outputText
+								value="#{organismesController.organismeFinancementModifie.typeFinancement.nomTypeFinancement}" />
+							<br />
+
+							<h:outputText value="Conditions d'Accès :" class="titres" />
+							<h:outputText
+								value="#{organismesController.organismeFinancementModifie.conditionsAcces}" />
+							<br />
+							<h:outputText value="Date de début de Partenariat" class="titres" />
+							<h:outputText
+								value="#{organismesController.organismeFinancementModifie.descriptionOrganismeFinancement}" />
+							<br />
+							<h:outputText value="Type de Prospect" class="titres" />
+							<h:outputText
+								value="#{organismesController.organismeFinancementModifie.typeProspect.nomProspect}" />
+							<br />
+							<h:outputText value="Statut" class="titres" />
+							<h:outputText
+								value="#{organismesController.organismeFinancementModifie.statut.nomStatut}"
+								style="color:vert" />
+
+						</p:panelGrid>
+					</p:outputPanel>
+				</p:dialog>
+
+
+
+
+				<p:dialog header="Modifier" widgetVar="dlg2" id="dlg2" modal="true"
+					height="650" class="widget">
+					<p:outputPanel id="modifier">
+						<p:panelGrid class="panelGrid" columns="2"
+							rendered="#{not empty organismesController.organismeFinancementModifie}">
+
+
+							<h:outputLabel for="nomOrganismeTxt" value="Nom de l'organisme:"
+								class="titres" />
+							<h:inputText id="nomOrganismeTxt"
+								value="#{organismesController.organismeFinancementModifie.nomOrganismeFinancement}"
+								size="50" />
+
+							<h:outputLabel for="descriptionOrganismeTxt" value="Description"
+								class="titres" />
+							<h:inputTextarea id="descriptionOrganismeTxt"
+								value="#{organismesController.organismeFinancementModifie.descriptionOrganismeFinancement}"
+								style="width:387.5px;" />
+
+							<h:outputLabel for="emailOrganismeTxt" value="Email:"
+								class="titres" />
+							<h:inputText id="emailOrganismeTxt"
+								value="#{organismesController.organismeFinancementModifie.mailOrganismeFinancement}"
+								size="50" />
+
+
+							<h:outputLabel for="telephoneOrganismeTxt" value="Telephone :"
+								class="titres" />
+							<p:inputText id="telephoneOrganismeTxt"
+								value="#{organismesController.organismeFinancementModifie.telephoneOrganismeFinancement}"
+								size="50" />
+
+							<h:outputLabel for="interlocuteurOrganismeTxt"
+								value="Interlocuteur :" class="titres" />
+							<h:inputText id="interlocuteurOrganismeTxt"
+								value="#{organismesController.organismeFinancementModifie.interlocuteursOrganismeFinancement}"
+								size="50" />
+
+
+							<h:outputLabel for="dateDebutParteariatTxt"
+								value="Date du debut du partenariat :" class="titres" />
+							<h:inputText label="Date du debut du partenariat :"
+								id="dateDebutParteariatTxt"
+								value="#{organismesController.organismeFinancementModifie.dateDebutPartenariatOrganisme}"
+								required="true" size="50">
+								<f:convertDateTime pattern="MM-dd-yyyy" />
+							</h:inputText>
+
+							<h:outputLabel for="conditionAccesTxt"
+								value="Condition d'accées :" class="titres" />
+							<h:inputTextarea id="conditionAccesTxt"
+								value="#{organismesController.organismeFinancementModifie.conditionsAcces}"
+								style="width:387.5px;" />
+
+
+							<h:outputLabel for="nomAdresseTxt" value="Adresse :"
+								class="titres" />
+							<h:inputText id="nomAdresseTxt"
+								value="#{organismesController.organismeFinancementModifie.adresse}"
+								size="50" />
+
+							<h:outputLabel for="villeTxt" value="Ville :" class="titres" />
+							<h:inputText id="villeTxt"
+								value="#{organismesController.organismeFinancementModifie.ville}"
+								size="50" />
+
+							<h:outputLabel for="codePostaleTxt" value="Code postale:"
+								class="titres" />
+							<h:inputText id="codePostaleTxt"
+								value="#{organismesController.organismeFinancementModifie.codePostale}"
+								size="50" />
+
+							<h:outputLabel for="paysTxt" value="Pays :" class="titres" />
+							<h:inputText id="paysTxt"
+								value="#{organismesController.organismeFinancementModifie.pays}"
+								size="50" />
+
+							<h:outputLabel for="typeFinancement"
+								value="Type de financement :" class="titres" />
+							<h:selectOneMenu id="trl1"
+								value="#{organismesController.selectedTypeFinancement}"
+								style="width:387.5px">
+								<f:selectItems
+									value="#{organismesController.listeTypeFinancement}"
+									var="typeFinan" itemLabel="#{typeFinan.nomTypeFinancement}"
+									itemValue="#{typeFinan.nomTypeFinancement}" />
+							</h:selectOneMenu>
+
+							<h:outputLabel for="typeProspectTxt" value="Type de prospect :"
+								class="titres" />
+							<h:selectOneMenu id="trl2"
+								value="#{organismesController.selectedTypeProspect}"
+								style="width:387.5px">
+								<f:selectItems value="#{organismesController.listeTypeProspect}"
+									var="typePros" itemLabel="#{typePros.nomProspect}"
+									itemValue="#{typePros.nomProspect}" />
+							</h:selectOneMenu>
+
+							<h:outputLabel for="statutTxt" value="Type de statut :"
+								class="titres" />
+							<h:selectOneMenu id="trl3"
+								value="#{organismesController.selectedStatut}"
+								style="width:387.5px">
+								<f:selectItems value="#{organismesController.listeStatut}"
+									var="typeStat" itemLabel="#{typeStat.nomStatut}"
+									itemValue="#{typeStat.nomStatut}" />
+							</h:selectOneMenu>
+
+							<br />
+
+
+							<p:growl id="messages1" />
+							<h:outputText value=" " />
+							<p:commandButton align="right" value="Enregistrer"
+								class="form-btn semibold"
+								actionListener="#{organismesController.modifierOrganisme}"
+								update="messages1">
+								<p:confirm header="Confirmation"
+									message="Etes vous sûr de vouloir modifier cet Organisme?"
+									icon="ui-icon-alert" />
+							</p:commandButton>
+
+							<p:confirmDialog global="true">
+								<p:commandButton value="oui" type="button"
+									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+								<p:commandButton value="Non" type="button"
+									styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+
+							</p:confirmDialog>
+						</p:panelGrid>
+
+
+					</p:outputPanel>
+				</p:dialog>
+
+				<p:dialog header="Nouvel Organisme" widgetVar="dlg3" id="dlg3"
+					modal="true" height="600" class="widget">
+					<p:outputPanel id="new">
+						<p:panelGrid class="panelGrid" columns="2">
+
+							<h:outputLabel value="Nom de l'organisme:" for="nomOrganismeTxt3"
+								class="titres" />
+							<h:inputText id="nomOrganismeTxt3"
+								value="#{organismesController.organismeFinancementCree.nomOrganismeFinancement}"
+								size="50"></h:inputText>
+
+							<h:outputLabel value="Description :"
+								for="descriptionOrganismeTxt3" class="titres" />
+							<h:inputText id="descriptionOrganismeTxt3"
+								value="#{organismesController.organismeFinancementCree.descriptionOrganismeFinancement}"
+								size="50"></h:inputText>
+
+							<h:outputLabel value="Email :" for="emailOrganismeTxt3"
+								class="titres" />
+							<h:inputText id="emailOrganismeTxt3"
+								value="#{organismesController.organismeFinancementCree.mailOrganismeFinancement}"
+								size="50"></h:inputText>
+
+							<h:outputLabel value="Telephone :" for="telephoneOrganismeTxt3"
+								class="titres" />
+							<h:inputText id="telephoneOrganismeTxt3"
+								value="#{organismesController.organismeFinancementCree.telephoneOrganismeFinancement}"
+								size="50"></h:inputText>
+
+							<h:outputLabel value="Interlocuteur :"
+								for="interlocuteurOrganismeTxt3" class="titres" />
+							<h:inputText id="interlocuteurOrganismeTxt3"
+								value="#{organismesController.organismeFinancementCree.interlocuteursOrganismeFinancement}"
+								size="50"></h:inputText>
+
+
+							<h:outputLabel value="Date du debut du partenariat :"
+								for="dateDebutParteariatTxt3" class="titres" />
+							<h:inputText id="dateDebutParteariatTxt3"
+								value="#{organismesController.organismeFinancementCree.dateDebutPartenariatOrganisme}"
+								size="50">
+								<f:convertDateTime pattern="dd-mm-yyyy" />
+							</h:inputText>
+
+							<h:outputLabel value="Condition d'accées :"
+								for="conditionAccesTxt3" class="titres" />
+							<h:inputText id="conditionAccesTxt3"
+								value="#{organismesController.organismeFinancementCree.conditionsAcces}"
+								size="50"></h:inputText>
+
+							<h:outputLabel value="Adresse :" for="nomAdresseTxt3"
+								class="titres" />
+							<h:inputText id="nomAdresseTxt3"
+								value="#{organismesController.organismeFinancementCree.adresse}"
+								size="50"></h:inputText>
+
+							<h:outputLabel value="Ville :" for="villeTxt3" class="titres" />
+							<h:inputText id="villeTxt3"
+								value="#{organismesController.organismeFinancementCree.ville}"
+								size="50"></h:inputText>
+
+							<h:outputLabel value="Type de financement :" class="titres" />
+							<h:selectOneMenu id="typeFinancementTxt3"
+								value="#{organismesController.selectedTypeFinancement}"
+								style="width:387.5px">
+								<f:selectItems
+									value="#{organismesController.listeTypeFinancement}"
+									var="typeFin" itemLabel="#{typeFin.nomTypeFinancement}"
+									itemValue="#{typeFin.nomTypeFinancement}" />
+							</h:selectOneMenu>
+
+							<h:outputLabel value="Type prospect :" class="titres" />
+							<h:selectOneMenu id="typeProspectTxt3"
+								value="#{organismesController.selectedTypeProspect}"
+								style="width:387.5px">
+								<f:selectItems value="#{organismesController.listeTypeProspect}"
+									var="typePros" itemLabel="#{typePros.nomProspect}"
+									itemValue="#{typePros.nomProspect}" />
+							</h:selectOneMenu>
+
+							<h:outputLabel value="Statut :" class="titres" />
+							<h:selectOneMenu id="statutTxt3"
+								value="#{organismesController.selectedStatut}"
+								style="width:387.5px">
+								<f:selectItems value="#{organismesController.listeStatut}"
+									var="typeStat" itemLabel="#{typeStat.nomStatut}"
+									itemValue="#{typeStat.nomStatut}" />
+							</h:selectOneMenu>
+
+
+							<br />
+
+
+							<p:growl id="messages3" />
+							<h:outputText value=" " />
+							<p:commandButton align="center" value="Enregistrer"
+								class="form-btn semibold"
+								actionListener="#{organismesController.createOrganisme}"
+								update="messages1">
+								<p:confirm header="Confirmation"
+									message="Etes vous sûr de vouloir ajouter cet Organisme?"
+									icon="ui-icon-alert" />
+							</p:commandButton>
+
+
+							<p:confirmDialog global="true">
+								<p:commandButton value="oui" type="button"
+									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+								<p:commandButton value="Non" type="button"
+									styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+							</p:confirmDialog>
+						</p:panelGrid>
+					</p:outputPanel>
+				</p:dialog>
+				</div>
+				<br />
+				<center>
+					<p:commandLink update=":form:new" oncomplete="PF('dlg3').show()">
+						<p:commandButton value="Ajouter un nouvel Organisme"
+							icon="fas fa-plus-circle"></p:commandButton>
+					</p:commandLink>
+				</center>
+
+
+			</h:form>
+		
+	</ui:define>
+</ui:composition>

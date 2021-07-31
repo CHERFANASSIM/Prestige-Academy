@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+
+	
+	<ui:define name="content">
+<h:form>
+<br />
+		<h1 id="titrePageGerant">Promotion Gérant d'Hôtel</h1> <p:commandButton id="retourGerant" value="Retour" onclick="window.history.back();"/>
+		<hr class="style-six"></hr>
+		<div id="table-wrapper">
+			
+				<p:dataTable var="ligneGerantHotel" 
+					data-href="http://tutorialsplane.com"
+					value="#{stagiairesController.listeGerantshotel}" border="2"
+					class="table" selectionMode="single"
+					rowKey="#{ligneGerantHotel.stagiaireID}"
+					selection="#{stagiairesController.stagiaireSelected}"
+					scrollable="true" action="ficheStag">
+					<p:ajax event="rowSelect"
+						listener="#{stagiairesController.chargerLeStagiaire}"
+						oncomplete="editRowCommand()" immediate="true" />
+					<p:column>
+						<f:facet name="header">Nom</f:facet>
+						#{ligneGerantHotel.nomStagiaire}
+						<p:remoteCommand name="editRowCommand" id="editRowCommand" action="ficheStag1" />
+					</p:column>
+					
+					<p:column>
+						<f:facet name="header">Prénom</f:facet>
+						#{ligneGerantHotel.prenomStagiaire}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Date de naissance</f:facet>
+						#{ligneGerantHotel.dateAnniversaireStagiaire}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Diplome</f:facet>
+						#{ligneGerantHotel.diplome}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Langues</f:facet>
+						#{ligneGerantHotel.languesParlees}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Statut Financement</f:facet>
+						#{ligneGerantHotel.statutFinancement.nomFinancement}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Statut Recrutement</f:facet>
+						#{ligneGerantHotel.statutRecrutement.nomStatutRecrutement}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Ville</f:facet>
+						#{ligneGerantHotel.ville}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Promotion</f:facet>
+						#{ligneGerantHotel.promotion.nomPromotion}
+					</p:column>
+					<p:column>
+					<p:commandButton value="Modifier" 
+					actionListener="#{stagiairesController.chargerStagiaire(ligneGerantHotel)}" action="ficheStagModif1"/>
+					</p:column>
+				</p:dataTable>
+		</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

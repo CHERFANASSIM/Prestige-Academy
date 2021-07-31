@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    JBoss, Home of Professional Open Source
+    Copyright 2013, Red Hat, Inc. and/or its affiliates, and individual
+    contributors by the @authors tag. See the copyright.txt in the
+    distribution for a full listing of individual contributors.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/templates/default.xhtml">
+
+    <ui:define name="content">
+
+        <div id="global">
+
+            <br/> <br/>
+            <h1 id="titrePage">Prospection Entreprise </h1>
+            <hr class="style-six"></hr>
+            <br/>
+            <div id="divleft">
+                <h:form id="entrepriseForm" var="entrepriseModifie">
+                    <div id="topdivleft">
+                        <div id="photoStag">
+
+                            <h:graphicImage
+                                    value="https://www.breizh-info.com/wp-content/uploads/2019/09/vol_identite.jpg"
+                                    height="216" width="280"/>
+
+                        </div>
+
+                        <div id="infosPerso">
+
+                            <h:panelGrid columns="2">
+                                <h:outputLabel id="nomEntrepriseLabel" value="Historique des contacts :"
+                                               for="nomEntrepriseTxt"/>
+                                <h:inputText id="nomEntrepriseTxt"
+                                             value="#{entreprisesController.entrepriseModifie.nomEntreprise}"
+                                             size="15"></h:inputText>
+
+
+                                <h:outputLabel id="rueAdressePersLabel" value="Rue :"
+                                               for="rueAdressePersTxt"/>
+                                <h:inputText id="rueAdressePersTxt"
+                                             value="#{entreprisesController.entrepriseModifie.adresse}"
+                                             size="15"></h:inputText>
+
+                                <h:outputLabel id="codePostalAdressePersLabel"
+                                               value="Code postal :" for="codePostalAdresseTxt"/>
+                                <h:inputText id="codePostalAdresseTxt"
+                                             value="#{entreprisesController.entrepriseModifie.ville}"
+                                             size="15"></h:inputText>
+
+                                <h:outputLabel id="villeAdressePersLabel" value="Ville :"
+                                               for="villeAdresseTxt"/>
+                                <h:inputText id="villeAdresseTxt"
+                                             value="#{entreprisesController.entrepriseModifie.codePostale}"
+                                             size="15"></h:inputText>
+
+                                <h:outputLabel id="paysersLabel" value="Pays :"
+                                               for="paysTxt"/>
+                                <h:inputText id="paysTxt"
+                                             value="#{entreprisesController.entrepriseModifie.pays}"
+                                             size="15"></h:inputText>
+                            </h:panelGrid>
+
+                        </div>
+                    </div>
+
+                    <div id="autresInfos">
+                        <p id="titresP">Coordonnées</p>
+
+                        <h:panelGrid columns="2">
+                            <h:outputLabel id="telephoneLabel" value="Téléphone :"
+                                           for="telephoneTxt"/>
+                            <h:inputText id="telephoneTxt"
+                                         value="#{entreprisesController.entrepriseModifie.telephoneEntreprise}"
+                                         size="30"></h:inputText>
+
+                            <h:outputLabel id="emailLabel" value="Email :"
+                                           for="emailTxt"/>
+                            <h:inputText id="emailTxt"
+                                         value="#{entreprisesController.entrepriseModifie.mailEntreprise}"
+                                         size="30"></h:inputText>
+
+                            <h:outputLabel id="interlocuteurLabel" value="Interlocuteur :"
+                                           for="interlocuteurTxt"/>
+                            <h:inputText id="interlocuteurTxt"
+                                         value="#{entreprisesController.entrepriseModifie.interlocuteurs}"
+                                         size="30"></h:inputText>
+                        </h:panelGrid>
+
+                        <br/>
+                        <p id="titresP">Informations supplémentaires</p>
+
+                        <h:panelGrid>
+                            <h:panelGrid columns="3">
+                                <h:panelGrid>
+                                    <h:outputLabel id="datedebutPartenariatLabel"
+                                                   value="Date de début de partenariat :"
+                                                   for="datedebutPartenariatTxt"/>
+                                    <h:inputText id="datedebutPartenariatTxt"
+                                                 value="#{entreprisesController.entrepriseModifie.dateDebutPartenariat}"
+                                                 size="15">
+                                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                    </h:inputText>
+                                </h:panelGrid>
+                                <h:panelGrid>
+                                    <h:outputLabel id="tauxSatisLabel" value="Taux de Satisfaction :"
+                                                   for="tauxSatTxt" style="align-content: center"/>
+                                    <h:inputText id="tauxSatTxt"
+                                                 value="#{entreprisesController.entrepriseModifie.tauxSatisfaction}"
+                                                 size="5"></h:inputText>
+                                </h:panelGrid>
+
+                                <h:panelGrid>
+                                    <h:outputLabel id="tauxSpartLabel"
+                                                   value="Taux de participation dans les événements :"
+                                                   style="align-content: center"
+                                                   for="tauxpartTxt"/>
+                                    <h:inputText id="tauxpartTxt"
+                                                 value="#{entreprisesController.entrepriseModifie.tauxParticipationEvenements}"
+                                                 size="5" style="align-content: center"></h:inputText>
+                                </h:panelGrid>
+                            </h:panelGrid>
+
+                            <br></br>
+                            <h:outputLabel id="criteresLabel" value="Critères :"
+                                           for="critereTxt"/>
+                            <h:inputText id="critereTxt"
+                                         value="#{entreprisesController.entrepriseModifie.criteresEntreprise}"
+                                         size="60"></h:inputText>
+                            <br></br>
+
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="2">
+                            <h:panelGrid>
+                                <h:outputLabel id="statutLabel"
+                                               value="Statut de l'entreprise :" for="statutTxt"/>
+                                <h:selectOneMenu
+                                        value="#{entreprisesController.selectedStatut}"
+                                        panelStyle="width:280px"
+                                        style="width:260px">
+                                    <f:selectItems
+                                            value="#{entreprisesController.statutList}"
+                                            var="statut"
+                                            itemLabel="#{statut.nomStatut}"
+                                            itemValue="#{statut.nomStatut}"/>
+                                </h:selectOneMenu>
+                            </h:panelGrid>
+
+                            <h:panelGrid>
+                                <h:outputLabel id="niveauAcessLabel"
+                                               value="Niveau d'accès de l'entreprise :" for="NAccesTxt"/>
+                                <h:selectOneMenu
+                                        value="#{entreprisesController.selectedNiveauAcces}"
+                                        panelStyle="width:280px"
+                                        style="width:260px">
+                                    <f:selectItems
+                                            value="#{entreprisesController.niveauAccesList}"
+                                            var="NiveauAcces"
+                                            itemLabel="#{NiveauAcces.nomNiveauAcces}"
+                                            itemValue="#{NiveauAcces.nomNiveauAcces}"/>
+                                </h:selectOneMenu>
+                            </h:panelGrid>
+                        </h:panelGrid>
+
+                        <br/>
+                        <p id="titresP">Type de Propect</p>
+
+                        <h:panelGrid columns="2">
+                            <h:outputLabel id="typeProspectLabel"
+                                           value="Type de Prospect :" for="typeProspectTxt"/>
+                            <h:selectOneMenu
+                                    value="#{entreprisesController.selectedTypeProspect}"
+                                    panelStyle="width:280px"
+                                    style="width:260px">
+                                <f:selectItems
+                                        value="#{entreprisesController.listTypeProspect}"
+                                        var="typeProspect"
+                                        itemLabel="#{typeProspect.nomProspect}"
+                                        itemValue="#{typeProspect.nomProspect}"/>
+                            </h:selectOneMenu>
+                        </h:panelGrid>
+
+                        <br/>
+                        <p id="titresP">Préférence Type de contrat</p>
+
+                        <h:panelGrid columns="2">
+                            <h:outputLabel id="prefTypeContratLabel"
+                                           value="Préférence de type de contrat :" for="prefTypeContratTxt"/>
+                            <h:selectOneMenu
+                                    value="#{entreprisesController.selectedPrefTypeContrat}"
+                                    panelStyle="width:280px"
+                                    style="width:260px">
+                                <f:selectItems value="#{entreprisesController.listPreferenceTypeContratS}"
+                                               var="prefTypeContrat"
+                                               itemLabel="#{prefTypeContrat.nomTypeContrat}"
+                                               itemValue="#{prefTypeContrat.nomTypeContrat}"/>
+                            </h:selectOneMenu>
+                        </h:panelGrid>
+
+                        <br/>
+
+                        <p:commandButton value="Enregistrer"
+                                         action="#{entreprisesController.upadteEntreprise()}"/>
+
+                    </div>
+                </h:form>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>

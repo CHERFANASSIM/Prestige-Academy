@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<h:head>
+			<h:outputStylesheet library="css" name="cssDefault1.css" />
+		</h:head>
+		<body>
+			<h:form id="ficheCreationEv" var="evenement">
+				<div class="gauche">
+					<h:panelGrid columns="2" border="1" bgcolor="#C3969F"
+						cellpadding="15" cellspacing="4">
+						<f:facet name="header">
+							<h:outputLabel value="Fiche Evenement "></h:outputLabel>
+						</f:facet>
+						
+						
+						<h:outputLabel id="typeEvlabel" value="Type de l'évenement :"></h:outputLabel>
+						<h:selectOneMenu id="trl" value="#{evenementControlleur.evenementCree}" style="width:125px">
+							<f:selectItems value="#{evenementControlleur.listeTypeEvenement}" var="typeEvt"
+							 	itemLabel="#{typeEvt.nomTypeEvenement}" itemValue="#{typeEvt.nomTypeEvenement}"/>
+						</h:selectOneMenu>
+					
+	
+						<p:outputLabel id="utxlabel" value="Nom de l'utilisateur:"></p:outputLabel>
+						<h:selectOneMenu id="uti" value="#{evenementControlleur.evenementCree}"  style="width:125px">
+							<f:selectItems value="#{evenementControlleur.listeUtilisateurs}" var="utilisateur" 
+								itemLabel="#{utilisateur.nomPrenomUtilisateurs}" itemValue="#{utilisateur.nomPrenomUtilisateurs}"/>
+						</h:selectOneMenu>
+						
+						
+						<h:outputLabel id="dateEvenementLabel"
+							value="Date de l'événement:" for="dateEvenementTxt" />
+						<h:inputText id="dateEvenementTxt"
+							value="#{evenementControlleur.evenementCree.dateEvenement}" size="10">
+							<f:convertDateTime pattern="yyyy-mm-dd" />
+						</h:inputText>
+						<h:outputLabel id="timeLabel" value="L'heure de l'événement :"
+							for="heureEvenementTxt" />
+						<h:inputText id="heureEvenementTxt"
+							value="#{evenementControlleur.evenementCree.heureEvenement}"
+							size="30"></h:inputText>
+						<h:outputLabel id="lieuLabel" value="Lieu de l'évenement :"
+							for="lieuEvenementTxt" />
+						<h:inputText id="lieuEvenementTxt"
+							value="#{evenementControlleur.evenementCree.lieuEvenement}" size="30"></h:inputText>
+						<h:outputLabel id="participantsLabel" value="Participants:"
+							for="participantsTxt" />
+						<h:inputTextarea id="participantsTxt"
+							value="#{evenementControlleur.evenementCree.personneEvenement}"></h:inputTextarea>
+						<h:outputLabel id="descriptionLabel" value="Description:"
+							for="descriptionTxt" />
+						<h:inputTextarea id="descriptionTxt"
+							value="#{evenementControlleur.evenementCree.descriptionEvenement}"></h:inputTextarea>
+						<h:commandButton value="Save"
+							action="#{evenementControlleur.createEvenenement}"></h:commandButton>
+					</h:panelGrid>
+				</div>
+			</h:form>
+		</body>
+	</ui:define>
+</ui:composition>

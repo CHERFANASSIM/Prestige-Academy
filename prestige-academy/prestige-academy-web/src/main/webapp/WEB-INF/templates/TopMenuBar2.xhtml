@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<body>
+	<ui:composition>
+		<div id="navbar">
+
+			<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top"
+				id="navbar">
+
+			<form class="form-inline my-2 my-lg-0">
+				<input class=" input-large form-control mr-sm-2 " type="search"
+					placeholder="Tapez votre recherche ici" aria-label="Rechercher" />
+				<button class="btn btn-outline-warning my-3 my-sm-0" type="submit">Search</button>
+			</form>
+
+			<div class="collapse navbar-collapse d-flex justify-content-end"
+				id="navbarSupportedContent">
+				<ul class="navbar-nav d-flex justify-content-end">
+					<div id="clock">00:00:00</div>
+					<ul class="navbar-nav ml-auto nav-flex-icons">
+						<li class="nav-item"><a
+							class="nav-link waves-effect waves-light" id="notif"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<h:form>
+								<h:outputText id="txt_count" value="#{notificationsController.compteurNotifcation}" />
+							</h:form>
+
+							<i
+								class="fas fa-envelope mr-3 mt-10"></i>
+						</a>
+							<div
+									class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
+									aria-labelledby="navbarDropdownMenuLink-55">
+								<p:dataTable var="ligneNot" class="table-row" data-href="http://tutorialsplane.com"
+											 value="#{notificationsController.notificationsList}" border="2"
+											 styleClass="fl-table" selectionMode="single"
+											 rowKey="#{ligneNot.notificationID}"
+											 scrollable="true" action="notificationsList">
+
+								<p:column>
+									#{ligneNot.message}
+								</p:column>
+								</p:dataTable>
+							</div>
+						</li>
+						<li class="nav-item avatar dropdown"><a
+							class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55"
+							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								
+								<h:graphicImage
+								value="#{connexionController.utilisateurConnecte.photoUrlUtilisateur}"
+								class="rounded-circle z-depth-0 w-45" id="avatar"
+								alt="avatar image" />
+								
+						</a>
+							<div
+								class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
+								aria-labelledby="navbarDropdownMenuLink-55">
+								<a class="dropdown-item" href="#">Se deconnecter</a> <a
+									class="dropdown-item" href="#">Changer d'Utilisateur</a> <a
+									class="dropdown-item" href="#">Mes infos Personnelles</a>
+							</div></li>
+					</ul>
+				</ul>
+			</div>
+			</nav>
+
+
+
+		</div>
+		<script>
+			window.onscroll = function() {
+				myFunction()
+			};
+
+			var navbar = document.getElementById("navbar");
+			var sticky = navbar.offsetTop;
+
+			function myFunction() {
+				if (window.pageYOffset >= sticky) {
+					navbar.classList.add("sticky")
+				} else {
+					navbar.classList.remove("sticky");
+				}
+			}
+		</script>
+
+	</ui:composition>
+</body>
+</html>

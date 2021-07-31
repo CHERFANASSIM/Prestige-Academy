@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="content">
+
+		<h2>Modifier un Organisme de financement</h2>
+		<h:form id="ficheModifierOrganisme" var="organismeFinancement">
+			<h:panelGrid columns="1">
+
+				<h:outputLabel for="nomOrganismeTxt" value="Nom de l'organisme:" />
+				<h:inputText id="nomOrganismeTxt" rows="3"
+					value="#{organismesController.organismeFinancementModifie.nomOrganismeFinancement}" />
+
+				<h:outputLabel for="descriptionOrganismeTxt" value="Description" />
+				<h:inputTextarea id="descriptionOrganismeTxt" rows="3"
+					value="#{organismesController.organismeFinancementModifie.descriptionOrganismeFinancement}" />
+
+				<h:outputLabel for="emailOrganismeTxt" value="Email:" />
+				<h:inputText id="emailOrganismeTxt" rows="3"
+					value="#{organismesController.organismeFinancementModifie.mailOrganismeFinancement}" />
+
+
+				<h:outputLabel for="telephoneOrganismeTxt" value="Telephone :" />
+				<p:inputText id="telephoneOrganismeTxt" rows="3"
+					value="#{organismesController.organismeFinancementModifie.telephoneOrganismeFinancement}" />
+
+				<h:outputLabel for="interlocuteurOrganismeTxt"
+					value="Interlocuteur :" />
+				<h:inputText id="interlocuteurOrganismeTxt" rows="3"
+					value="#{organismesController.organismeFinancementModifie.interlocuteursOrganismeFinancement}" />
+
+				<h:outputLabel for="logoOrganismeTxt" value="logo : :" />
+				<h:inputText id="logoOrganismeTxt" rows="3"
+					value="#{organismesController.organismeFinancementModifie.logoUrlOrga}" />
+
+				<h:outputLabel for="dateDebutParteariatTxt"
+					value="Date du debut du partenariat :" />
+				<h:inputText label="Date du debut du partenariat :"
+					id="dateDebutParteariatTxt" rows="3"
+					value="#{organismesController.organismeFinancementModifie.dateDebutPartenariatOrganisme}"
+					required="true">
+					<f:convertDateTime pattern="MM-dd-yyyy" />
+				</h:inputText>
+					(mm-dd-yyyy)
+
+					<h:outputLabel for="conditionAccesTxt" value="Condition d'accées :" />
+				<h:inputTextarea id="conditionAccesTxt" rows="3"
+					value="#{organismesController.organismeFinancementModifie.conditionsAcces}" />
+
+
+				<h:outputLabel for="nomAdresseTxt" value="Adresse :" />
+				<h:inputTextarea id="nomAdresseTxt" rows="3"
+					value="#{organismesController.organismeFinancementModifie.adresse}" />
+
+				<h:outputLabel for="villeTxt" value="Ville :" />
+				<h:inputText id="villeTxt" rows="3"
+					value="#{organismesController.organismeFinancementModifie.ville}" />
+
+				<h:outputLabel for="codePostaleTxt" value="Code postale:" />
+				<h:inputText id="codePostaleTxt" rows="3"
+					value="#{organismesController.organismeFinancementModifie.codePostale}" />
+
+				<h:outputLabel for="paysTxt" value="Pays :" />
+				<h:inputText id="paysTxt" rows="3"
+					value="#{organismesController.organismeFinancementModifie.pays}" />
+
+				<h:outputLabel for="typeFinancement" value="Type de financement :" />
+				<h:selectOneMenu id="trl1"
+					value="#{organismesController.selectedTypeFinancement}"
+					style="width:125px">
+					<f:selectItems value="#{organismesController.listeTypeFinancement}"
+						var="typeFinan" itemLabel="#{typeFinan.nomTypeFinancement}" 
+						itemValue="#{typeFinan.nomTypeFinancement}"/>
+				</h:selectOneMenu>
+
+				<h:outputLabel for="typeProspectTxt" value="Type de prospect :" />
+				<h:selectOneMenu id="trl2"
+					value="#{organismesController.selectedTypeProspect}"
+					style="width:125px">
+					<f:selectItems value="#{organismesController.listeTypeProspect}"
+						var="typePros" itemLabel="#{typePros.nomProspect}" 
+						itemValue="#{typePros.nomProspect}"/>
+				</h:selectOneMenu>
+
+				<h:outputLabel for="statutTxt" value="Type de statut :" />
+				<h:selectOneMenu id="trl3"
+					value="#{organismesController.selectedStatut}" style="width:125px">
+					<f:selectItems value="#{organismesController.listeStatut}"
+						var="typeStat" itemLabel="#{typeStat.nomStatut}" 
+						itemValue="#{typeStat.nomStatut}"/>
+				</h:selectOneMenu>
+
+				<h:commandButton value="Modifier"
+					action="#{organismesController.modifierOrganisme}"></h:commandButton>
+				<h:messages styleClass="messages" errorClass="invalid"
+					infoClass="valid" warnClass="warning" globalOnly="true" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    JBoss, Home of Professional Open Source
+    Copyright 2013, Red Hat, Inc. and/or its affiliates, and individual
+    contributors by the @authors tag. See the copyright.txt in the
+    distribution for a full listing of individual contributors.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/defaultEntreprise.xhtml">
+
+	
+	<ui:define name="content">
+<h:form>
+<br />
+		<div id="divTable3">
+		<p id="titrePageEnt">Maîtres d'Hotel</p>
+			
+				<p:dataTable var="ligneMaitreHotel" class="table-row" data-href="http://tutorialsplane.com"
+					value="#{stagiairesController.listeMaitresHotel}" border="2"
+					styleClass="fl-table6">
+					<p:column>
+						<f:facet name="header">Prénom</f:facet>
+						#{ligneMaitreHotel.prenomStagiaire}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Diplome</f:facet>
+						#{ligneMaitreHotel.diplome}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Langues</f:facet>
+						#{ligneMaitreHotel.languesParlees}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Promotion</f:facet>
+						#{ligneMaitreHotel.promotion.nomPromotion}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Actions</f:facet>
+						<p:commandButton icon="fa fa-fw fa-user-plus" type="button"/>
+						
+						
+						
+						<p:growl id="messages2" />
+							<p:commandButton  class="form-btn semibold"
+								actionListener="#{notificationsEntrepriseController.nouvelleNotification(ligneMaitreHotel)}"
+								update="messages2" icon="fas fa-search">
+								<p:confirm header="Confirmation"
+									message="Etes vous sûr vouloir faire cette demande?"
+									icon="ui-icon-alert" />
+							</p:commandButton>
+
+							<p:confirmDialog global="true">
+								<p:commandButton value="oui" type="button"
+									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+								<p:commandButton value="Non" type="button"
+									styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+
+							</p:confirmDialog>
+						
+					
+						
+						
+						
+						
+					</p:column>
+					
+				</p:dataTable>
+			
+		</div>
+		</h:form>
+		
+		
+		
+		<div id="divTable4">
+		<p id="titrePageEnt">Chefs de Rang</p>
+			<h:form>
+				<p:dataTable var="ligneChefRang" class="table-row" data-href="http://tutorialsplane.com"
+					value="#{stagiairesController.listeChefsRang}" border="2"
+					styleClass="fl-table3">
+					
+					<p:column>
+						<f:facet name="header">Prénom</f:facet>
+						#{ligneChefRang.prenomStagiaire}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Diplome</f:facet>
+						#{ligneChefRang.diplome}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Langues</f:facet>
+						#{ligneChefRang.languesParlees}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Promotion</f:facet>
+						#{ligneChefRang.promotion.nomPromotion}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Actions</f:facet>
+						<p:commandButton icon="fa fa-fw fa-user-plus" type="button"/>
+						<p:growl id="messages3" />
+							<p:commandButton  class="form-btn semibold"
+								actionListener="#{notificationsEntrepriseController.nouvelleNotification(ligneChefRang)}"
+								update="messages3" icon="fas fa-search">
+								<p:confirm header="Confirmation"
+									message="Etes vous sûr de vouloir faire cette demande?"
+									icon="ui-icon-alert" />
+							</p:commandButton>
+
+							<p:confirmDialog global="true">
+								<p:commandButton value="oui" type="button"
+									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+								<p:commandButton value="Non" type="button"
+									styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+
+							</p:confirmDialog>
+						
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</div>
+		
+		
+		
+		<div id="divTable2">
+		<p id="titrePageEnt">Gérants d'Hôtel</p>
+			<h:form>
+				<p:dataTable var="ligneGerantsHotel" class="table-row" data-href="http://tutorialsplane.com"
+					value="#{stagiairesController.listeGerantshotel}" border="2"
+					styleClass="fl-table4">
+					
+					<p:column>
+						<f:facet name="header">Prénom</f:facet>
+						#{ligneGerantsHotel.prenomStagiaire}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Diplome</f:facet>
+						#{ligneGerantsHotel.diplome}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Langues</f:facet>
+						#{ligneGerantsHotel.languesParlees}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Promotion</f:facet>
+						#{ligneGerantsHotel.promotion.nomPromotion}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Actions</f:facet>
+						<p:commandButton icon="fa fa-fw fa-user-plus" type="button"/>
+						<p:growl id="messages4" />
+							<p:commandButton  class="form-btn semibold"
+								actionListener="#{notificationsEntrepriseController.nouvelleNotification(ligneGerantsHotel)}"
+								update="messages4" icon="fas fa-search">
+								<p:confirm header="Confirmation"
+									message="Etes vous sûr dvouloir faire cette demande?"
+									icon="ui-icon-alert" />
+							</p:commandButton>
+
+							<p:confirmDialog global="true">
+								<p:commandButton value="oui" type="button"
+									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+								<p:commandButton value="Non" type="button"
+									styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+
+							</p:confirmDialog>
+						
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</div>
+		
+		<div id="divTable1">
+			<h:form>
+			<p id="titrePageEnt">Sommeliers</p>
+				<p:dataTable var="ligneSommeliers" class="table-row" data-href="http://tutorialsplane.com"
+					value="#{stagiairesController.listeSommeliers}" border="2"
+					styleClass="fl-table5">
+					<p:column>
+						<f:facet name="header">Prénom</f:facet>
+						#{ligneSommeliers.prenomStagiaire}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Diplome</f:facet>
+						#{ligneSommeliers.diplome}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Langues</f:facet>
+						#{ligneSommeliers.languesParlees}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Promotion</f:facet>
+						#{ligneSommeliers.promotion.nomPromotion}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Actions</f:facet>
+						<p:commandButton icon="fa fa-fw fa-user-plus" type="button"/>
+						<p:growl id="messages5" />
+							<p:commandButton  class="form-btn semibold"
+								actionListener="#{notificationsEntrepriseController.nouvelleNotification(ligneSommeliers)}"
+								update="messages5" icon="fas fa-search">
+								<p:confirm header="Confirmation"
+									message="Etes vous sûr vouloir faire cette demande?"
+									icon="ui-icon-alert" />
+							</p:commandButton>
+
+							<p:confirmDialog global="true">
+								<p:commandButton value="oui" type="button"
+									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+								<p:commandButton value="Non" type="button"
+									styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+
+							</p:confirmDialog>
+						
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</div>
+		
+		
+		
+	</ui:define>
+</ui:composition>

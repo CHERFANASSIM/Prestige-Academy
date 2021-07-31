@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    JBoss, Home of Professional Open Source
+    Copyright 2013, Red Hat, Inc. and/or its affiliates, and individual
+    contributors by the @authors tag. See the copyright.txt in the
+    distribution for a full listing of individual contributors.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+
+
+
+	<ui:define name="content">
+		<div id="global2">
+		<h:form>
+			<br /> <br />
+			<h1 id="titreEnt">Fiche Entreprise</h1> <p:commandButton id="retourEnt" value="Retour"
+					onclick="window.history.back();" />
+			<hr class="style-six"></hr>
+			<br />
+			</h:form>
+			<div id="divleft2">
+				<h:form id="personnesForm" var="entrepriseModifie">
+					<div id="topdivleft2">
+						<div id="photoStag2">
+							<h:graphicImage
+								value="#{entreprisesController.entrepriseModifie.logoUrl}"
+								height="200" width="260" />
+
+
+						</div>
+
+						<div id="infosPerso2">
+							<h:panelGrid columns="1">
+								<h:outputLabel
+									value="#{entreprisesController.entrepriseModifie.nomEntreprise}" />
+								<h:outputLabel
+									value="#{entreprisesController.entrepriseModifie.adresse}" />
+
+								<h:outputLabel
+									value="#{entreprisesController.entrepriseModifie.ville} #{entreprisesController.entrepriseModifie.codePostale}" />
+								<br />
+								<h:outputLabel
+									value="Date début Partenariat #{entreprisesController.entrepriseModifie.dateDebutPartenariat} " />
+
+
+							</h:panelGrid>
+
+						</div>
+					</div>
+
+
+					<div id="autresInfos2">
+						<p id="titresP">Coordonnées</p>
+						<h:panelGrid columns="2">
+							<h:outputLabel value="Téléphone :" for="telephoneTxt"
+								class="titres" />
+							<h:outputLabel
+								value="#{entreprisesController.entrepriseModifie.telephoneEntreprise}"
+								for="telephoneTxt" />
+
+							<h:outputLabel value="Email :" class="titres" />
+							<h:outputLabel
+								value="#{entreprisesController.entrepriseModifie.mailEntreprise}"
+								for="email" />
+
+							<h:outputLabel value="Interlocuteur :" class="titres" />
+							<h:outputLabel
+								value="#{entreprisesController.entrepriseModifie.interlocuteurs}"
+								for="email" />
+
+
+
+							<br />
+
+							<p id="titresP">Statistiques</p>
+							<h:outputLabel value=" " />
+
+							<h:outputLabel value="Taux de Participation aux Evenements :"
+								for="languesTxt" class="titres" />
+							<h:outputLabel
+								value="#{entreprisesController.entrepriseModifie.tauxParticipationEvenements}" />
+
+							<h:outputLabel value="Taux de Satisfaction :" for="languesTxt"
+								class="titres" />
+							<h:outputLabel
+								value="#{entreprisesController.entrepriseModifie.tauxSatisfaction}" />
+
+
+							<br />
+							<p id="titresP">Autres Informations</p>
+							<h:outputLabel value=" " />
+
+							<h:outputLabel value="Préférences Type Contrat :" class="titres" />
+							<h:outputLabel
+								value="#{entreprisesController.entrepriseModifie.preferenceTypeContrat.nomTypeContrat}" />
+
+							<h:outputLabel value="Type de Prospect :" class="titres" />
+							<h:outputLabel
+								value="#{entreprisesController.entrepriseModifie.typeProspect.nomProspect}" />
+
+							<h:outputLabel value="Statut :" for="languesTxt" class="titres" />
+							<h:outputLabel
+								value="#{entreprisesController.entrepriseModifie.statut.nomStatut}" />
+
+
+							<p id="titresP">Recrutements</p>
+							<h:outputLabel value=" " />
+							
+							<h:outputLabel value="Recrutements En Cours :"
+								for="recrutementEnCoursTxt" class="titres" />
+								<h:outputLabel value=" " />
+								</h:panelGrid>
+							<h:dataTable var="ligneRecrutements" border="2" class="table-row2" 
+							styleClass="fl-table2"
+							value="#{entreprisesController.listeProcessRecru}">
+							<h:column>
+								<f:facet name="header">Stagiaire</f:facet>
+								#{ligneRecrutements.stagiaire.nomPrenom}
+							</h:column>
+							<h:column>
+								<f:facet name="header">Étape du Recrutement</f:facet>
+								#{ligneRecrutements.statutProcessusRecrutement.nomStatutProcessus}
+							</h:column>
+							<h:column>
+								<f:facet name="header">Action</f:facet>
+								<p:commandButton icon="fas fa-search"></p:commandButton>
+							</h:column>
+						</h:dataTable>
+
+						<br /> <br />
+
+					</div>
+
+				</h:form>
+			</div>
+
+		</div>
+
+		<div id="divright2">
+			<ul class="nav nav-tabs" id="myTab" role="tablist">
+				<li class="nav-item"><a class="nav-link active" id="onglet-tab"
+					data-toggle="tab" href="#interactions" role="tab"
+					aria-controls="home" aria-selected="true">Intéractions récentes</a></li>
+				<li class="nav-item"><a class="nav-link" id="onglet-tab"
+					data-toggle="tab" href="#contacter" role="tab"
+					aria-controls="profile" aria-selected="false">Envoyer un Mail</a></li>
+				<li class="nav-item"><a class="nav-link" id="onglet-tab"
+					data-toggle="tab" href="#documents" role="tab"
+					aria-controls="contact" aria-selected="false">Documents</a></li>
+			</ul>
+			<div class="tab-content" id="myTabContent">
+
+				<div class="tab-pane show active" id="interactions" role="tabpanel"
+					aria-labelledby="profile-tab">
+				
+
+
+					<h:form id="form">
+						<p:dataList value="#{entreprisesController.listeMails}" var="mail"
+							type="ordered">
+							<f:facet name="header">Derniers Mails</f:facet>
+        Date =#{mail.dateEvenement}, Objet=#{mail.objet}, Message= #{mail.contenu}
+    						</p:dataList>
+
+					</h:form>
+				</div>
+
+
+				<div class="tab-pane" id="contacter" role="tabpanel"
+					aria-labelledby="profile-tab">
+
+
+					<div class="inner contact">
+						<!-- Form Area -->
+						<div class="contact-form1">
+							<!-- Form -->
+							<h:form id="contact-us" method="post"
+								enctype="multipart/form-data">
+								<!-- Left Inputs -->
+								<div class="col-xs-6 wow animated slideInLeft"
+									data-wow-delay=".5s">
+
+
+									<br />
+
+									<h:outputLabel value="À :" />
+									<br />
+									<h:inputText type="email" name="mail" id="mail"
+										required="required" class="form" placeholder="Email"
+										value="#{selectedMailTo}" />
+									<br />
+									<h:outputLabel value="Objet :" />
+									<br />
+									<h:inputText type="text" name="subject" id="subject"
+										required="required" class="form" placeholder="Subject"
+										value="#{selectedObject}" />
+									<br />
+									<h:outputLabel value="Pièce Jointe :" />
+									<br />
+									<p:fileUpload value="#{mailController.file}" mode="simple"
+										skinSimple="true" />
+									<br />
+								</div>
+
+								<div class="col-xs-6 wow animated slideInRight"
+									data-wow-delay=".5s">
+
+									<h:outputLabel value="Message :" />
+									<br />
+									<h:inputText name="message" id="message" class="form textarea"
+										placeholder="Message" value="#{selectedContent}" />
+								</div>
+
+								<div class="relative fullwidth col-xs-12">
+									<!-- Send Button -->
+									<h:commandButton type="submit" class="form-btn semibold"
+										value="Envoyer"
+										action="#{mailController.sendEmailWithAttachments(selectedMailTo,selectedObject,selectedContent)}" />
+
+								</div>
+								<!-- Message -->
+								<div class="alert gray-bg mail-message not-visible-message">
+									<h:messages styleClass="messages" errorClass="invalid"
+										infoClass="valid" warnClass="warning" globalOnly="true" />
+								</div>
+							</h:form>
+
+						</div>
+					</div>
+				</div>
+
+
+
+
+				<div class="tab-pane" id="documents" role="tabpanel"
+					aria-labelledby="contact-tab">
+					<br />
+					<div id="docs">
+						<p id="titresP2">CV</p>
+					</div>
+
+					<div id="docs">
+						<p id="titresP2">CONTRATS</p>
+					</div>
+
+					<div id="docs">
+						<p id="titresP2">DEVIS/FACTURES</p>
+					</div>
+
+					<div id="docs">
+						<p id="titresP2">AUTRES DOCUMENTS</p>
+					</div>
+				</div>
+
+
+
+			</div>
+
+		</div>
+
+
+	</ui:define>
+</ui:composition>

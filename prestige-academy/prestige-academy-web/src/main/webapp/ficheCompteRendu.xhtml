@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+
+	<ui:define name="content">
+		<h:head>
+			<h:outputStylesheet library="css" name="cssDefault1.css"></h:outputStylesheet>
+		</h:head>
+		<body>
+			<h:form>
+				<h:panelGrid columns="2" border="1" bgcolor="#C3969F"
+					cellpadding="15" cellspacing="4">
+
+					<f:facet name="header">
+						<h:outputLabel value="Fiche compte rendu "></h:outputLabel>
+					</f:facet>
+					<h:outputLabel id="NomCompteRendu" value="Nom du compte rendu"
+						for="nomCompteRenduTxt"></h:outputLabel>
+					<h:inputText id="nomCompteRenduTxt"
+						value="#{evenementControlleur.compteRendu.nomCompteRendu}"
+						size="10">
+						</h:inputText>
+
+					<h:outputLabel id="ContenuCompteRendu" value="Contenu du compte rendu"
+						for="contenuCompteRenduTxt"></h:outputLabel>
+					<h:inputText id="contenuCompteRenduTxt"
+						value="#{evenementControlleur.compteRendu.contenuCompteRendu}"
+						size="10"></h:inputText>
+
+					<h:commandButton value="Modifier"
+						action="#{evenementControlleur.modifierCompteRenduEvenement}"></h:commandButton>
+					<h:messages styleClass="messages" errorClass="invalid"
+						infoClass="valid" warnClass="warning" globalOnly="true" />
+
+				</h:panelGrid>
+
+			</h:form>
+		</body>
+	</ui:define>
+</ui:composition>

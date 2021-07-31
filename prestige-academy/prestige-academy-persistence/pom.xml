@@ -1,0 +1,35 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.isika.prestigeacademy</groupId>
+		<artifactId>prestige-academy-parent</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>prestige-academy-persistence</artifactId>
+	<packaging>jar</packaging>
+	
+	<name>Prestige Academy Persistence</name>
+	<description>Prestige Academy Persistence Module</description>
+
+	<dependencies>
+		<!-- Dépendance vers le sous-module "Model" pour les entités -->
+		<dependency>
+            <groupId>com.isika.prestigeacademy</groupId>
+            <artifactId>prestige-academy-model</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.49</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>io</artifactId>
+            <version>7.1.9</version>
+        </dependency>
+    </dependencies>
+</project>

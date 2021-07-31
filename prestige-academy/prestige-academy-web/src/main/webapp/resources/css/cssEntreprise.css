@@ -1,0 +1,267 @@
+@charset "ISO-8859-1";
+
+
+
+
+.fl-table3 {
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 85%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: #f8f9fa00;
+    line-height: 12px;
+    margin-bottom: 70px;
+    margin-left: 100px;
+      box-shadow: 0 5px 6px 0 #58554d, 0 7px 15px 0 #888888;
+}
+
+.fl-table3 td, .fl-table th {
+    text-align: center;
+
+}
+
+.fl-table3 td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 13px;
+}
+
+.fl-table3 thead th {
+    color: #ffffff;
+    background: #6f0a0a75;
+    font-size: 15px;
+}
+
+.fl-table3 tr:nth-child(even) {
+    background: #eadede45;
+}
+
+
+
+
+
+
+
+.fl-table4 {
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 85%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: #f8f9fa00;
+    line-height: 12px;
+    margin-bottom: 70px;
+    margin-left: 100px;
+      box-shadow: 0 5px 6px 0 #58554d, 0 7px 15px 0 #888888;
+}
+
+.fl-table4 td, .fl-table th {
+    text-align: center;
+
+}
+
+.fl-table4 td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 13px;
+}
+
+.fl-table4 thead th {
+    color: #ffffff;
+    background: #b5981994;
+    font-size: 15px;
+}
+
+.fl-table4 tr:nth-child(even) {
+    background: #d2ba8817;
+}
+
+
+
+
+
+
+.fl-table5 {
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 85%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: #f8f9fa00;
+    line-height: 12px;
+    margin-bottom: 70px;
+    margin-left: 100px;
+      box-shadow: 0 5px 6px 0 #58554d, 0 7px 15px 0 #888888;
+}
+
+.fl-table5 td, .fl-table th {
+    text-align: center;
+
+}
+
+.fl-table5 td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 13px;
+}
+
+.fl-table5 thead th {
+    color: #ffffff;
+    background: #737373a8;
+    font-size: 15px;
+}
+
+.fl-table5 tr:nth-child(even) {
+    background: #bfbfbf21;
+}
+
+
+
+
+
+.fl-table6 {
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 85%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: #f8f9fa00;
+    line-height: 12px;
+    margin-bottom: 70px;
+    margin-left: 100px;
+    box-shadow: 0 5px 6px 0 #58554d, 0 7px 15px 0 #888888;
+
+}
+
+.fl-table6 td, .fl-table th {
+    text-align: center;
+
+}
+
+.fl-table6 td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 13px;
+}
+
+.fl-table6 thead th {
+    color: #ffffff;
+    background: #1b7a8a9e;
+    font-size: 15px;
+}
+
+.fl-table6 tr:nth-child(even) {
+    background: #0c54600a;
+}
+
+
+.tableOffres {
+	border-radius: 5px;
+	font-size: 14px;
+	font-weight: normal;
+	border: none;
+	border-collapse: collapse;
+	width: 100%;
+	max-width: 100%;
+	background-color: #f8f9fa;
+	line-height: 29px;
+}
+
+.tableOffres td, .tableOffre th {
+	text-align: center;
+	padding: 50px;
+}
+
+.tableOffres td {
+	border-right: 1px solid #f3f3f3;
+	font-size: 15px;
+}
+
+.tableOffres thead th {
+	color: #635b5b;
+	background:#caa55475;
+	font-size: 16px;
+}
+
+.tableOffres tr:nth-child(even) {
+	background: #a09b9b0f;
+}
+
+
+
+#offres{
+	display: table;
+	margin: 50px auto;
+	margin-bottom:50px;
+	width: 95%;
+		box-shadow: 3px 12px 15px rgba(16, 8, 8, 0.4);
+}
+
+
+
+
+
+#titrePageEnt {
+    display: table;
+    margin: 30px auto;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+
+.questions {
+    margin-top: 30px;
+    font-size: 15px;
+    margin-left: px auto;
+}
+#questionnaire {
+    margin-top: 30px;
+    font-size: 15px;
+    margin-left: 250px;
+    display: table;
+    color: #191919;
+    font-weight: 500;
+    display: table;
+    padding: 50px;
+    border: 1px solid #3c3a3a73;
+    box-shadow: 0 5px 6px 0 #9a937f, 0 7px 15px 0 #afa591;
+
+}
+
+#editjob{
+background-color: #c1999c70;
+	display: table;
+margin:50px auto;
+}
+
+
+.ui-datascroller .ui-datascroller-item {
+	border-bottom: 1px solid #A8A8A8;
+	/* with the exported variables from Nova and Luna Themes*/
+	border-bottom-color: var(- -input-border-color, #A8A8A8);
+}
+
+
+.image{
+	margin-right: 55px;
+}
+
+.tab-content2{
+	margin-left: 80px;
+	overflow-y: scroll;
+	height :500px;
+}
+
+.ui-widget-content {
+	border: 1px solid #32323200;
+	color: #333333;
+background-color: rgba(255, 255, 255, 0);

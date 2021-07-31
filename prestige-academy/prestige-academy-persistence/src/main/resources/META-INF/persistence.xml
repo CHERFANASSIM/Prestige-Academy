@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xsi:schemaLocation="
+        http://xmlns.jcp.org/xml/ns/persistence
+        http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="PrestigeAcademyDS">
+		<jta-data-source>java:jboss/datasources/crmdatabase</jta-data-source>
+
+		<class>com.isika.prestigeacademy.model.entities.CompteRendu</class>
+		<class>com.isika.prestigeacademy.model.entities.DossierPaiement</class>
+		<class>com.isika.prestigeacademy.model.entities.EmailRecu</class>
+		<class>com.isika.prestigeacademy.model.entities.EnquetesSatisfaction</class>
+		<class>com.isika.prestigeacademy.model.entities.Entreprise</class>
+		<class>com.isika.prestigeacademy.model.entities.EtapeValidation</class>
+		<class>com.isika.prestigeacademy.model.entities.Evenement</class>
+		<class>com.isika.prestigeacademy.model.entities.GererProspect</class>
+		<class>com.isika.prestigeacademy.model.entities.NiveauAcces</class>
+		<class>com.isika.prestigeacademy.model.entities.NiveauxPriorite</class>
+		<class>com.isika.prestigeacademy.model.entities.Note</class>
+		<class>com.isika.prestigeacademy.model.entities.Notifications</class>
+		<class>com.isika.prestigeacademy.model.entities.OrganismeFinancement</class>
+		<class>com.isika.prestigeacademy.model.entities.OffreEmploi</class>
+		<class>com.isika.prestigeacademy.model.entities.ProgressionToDo</class>
+		<class>com.isika.prestigeacademy.model.entities.PreferenceTypeContrat</class>
+		<class>com.isika.prestigeacademy.model.entities.ProcessusRecrutement</class>
+		<class>com.isika.prestigeacademy.model.entities.Promotion</class>
+		<class>com.isika.prestigeacademy.model.entities.SpecialiteFormation</class>
+		<class>com.isika.prestigeacademy.model.entities.Stagiaire</class>
+		<class>com.isika.prestigeacademy.model.entities.Statut</class>
+		<class>com.isika.prestigeacademy.model.entities.StatutFinancement</class>
+		<class>com.isika.prestigeacademy.model.entities.StatutProcessusRecrutement</class>
+		<class>com.isika.prestigeacademy.model.entities.StatutRecrutement</class>
+		<class>com.isika.prestigeacademy.model.entities.Todolist</class>
+		<class>com.isika.prestigeacademy.model.entities.TypeEvenement</class>
+		<class>com.isika.prestigeacademy.model.entities.TypeFinancement</class>
+		<class>com.isika.prestigeacademy.model.entities.TypeProspect</class>
+		<class>com.isika.prestigeacademy.model.entities.Utilisateur</class>
+		<properties>
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.MySQL57Dialect" />
+			<property
+				name="hibernate.hbm2ddl.import_files_sql_extractor"
+				value="org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor" />
+			<property name="hibernate.connection.charSet" value="UTF-8" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.enable_lazy_load_no_trans"
+				value="true" />
+		</properties>
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+>
+
+
+<h:head>
+	<title>Connexion</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF8"/>
+	<h:outputStylesheet library="css" name="cssConnexion.css"/>
+</h:head>
+
+<h:body>
+	<h:form>
+		<div id="logo"></div>
+		<div id="box1" align="center">
+			<p class="titres" align="center">ENTREPRISE</p>
+			<br/>
+			<h:commandButton class="btn" align="center" type="submit"
+							 value="Connexion" action="connexionEntreprise"/>
+		</div>
+		<div id="box2" align="center">
+			<p class="titres" align="center">ECOLE</p>
+			<br/>
+			<h:commandButton class="btn" align="center" type="submit"
+							 value="Connexion" action="connexionEcole"/>
+		</div>
+		<div id="box3" align="center">
+			<p class="titres" align="center">STAGIAIRE</p>
+
+			<br/>
+			<h:commandButton class="btn" align="center" type="submit"
+							 value="Connexion" action="connexionStagiaire"/>
+		</div>
+
+	</h:form>
+
+</h:body>
+</html>

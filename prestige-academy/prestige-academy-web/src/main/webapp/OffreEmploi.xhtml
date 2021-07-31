@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/defaultEntreprise.xhtml">
+
+<ui:define name="content">
+
+		<h2 id="titrePageEvent">Mes Offres d'Emploi</h2>
+		<br/>
+		<br/>
+		<br/>
+		<hr class="style-six"></hr>
+		<h:form>
+			<div id="offres">
+				<p:dataTable id="jobList" var="ligneJoblist"
+					value="#{offreEmploiController.listeOffreEmploi}" border="2"
+					class="tableOffres">
+
+					<p:column>
+						<f:facet name="header">Nom de l'Offre  </f:facet>
+				#{ligneJoblist.nomOffreEmploi}
+			</p:column>
+					<p:column>
+						<f:facet name="header"> Qualités requises </f:facet>
+				#{ligneJoblist.descriptionPoste}
+			</p:column>
+					<p:column>
+						<f:facet name="header"> Rémunération </f:facet>
+				#{ligneJoblist.salaires}
+			</p:column>
+
+					<p:column>
+						<f:facet name="header">Type de contrat</f:facet>	
+						
+				#{ligneTodolist.preferenceTypeContrat}
+				</p:column>
+
+					<p:column>
+						<f:facet name="header">Suppression</f:facet>
+						<p:commandButton align="right" value="Supprimer"
+							action="#{offreEmploiController.supprimerJob(ligneJoblist)}">
+						</p:commandButton>
+
+					</p:column>
+					<p:column>
+						<f:facet name="header">Modification</f:facet>
+						<p:commandButton align="left" value="Modifier"
+							actionListener="#{offreEmploiController.chargerOffreEmploi(ligneJoblist)}"
+							action="/editjob.xhtml">
+						</p:commandButton>
+					</p:column>
+						
+				</p:dataTable>
+			</div>
+
+		<center>
+				<p:commandButton value="Ajouter une Offre d'emploi" type="submit"
+					action="/addjob.xhtml">
+				</p:commandButton>
+		</center>
+			
+		</h:form>
+	</ui:define>
+</ui:composition>

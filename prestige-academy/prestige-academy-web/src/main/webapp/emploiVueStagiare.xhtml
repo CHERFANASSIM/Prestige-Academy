@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+
+
+
+
+
+		<h:head>
+			<h:outputStylesheet library="css" name="cssDefault1.css"
+				type="text/css" />
+		</h:head>
+
+		<h2>Les Offres d'emploi</h2>
+		<h:form>
+			<div>
+				<h:dataTable id="jobList" var="ligneJoblist"
+					value="#{offreEmploiController.listeOffreEmploi}" border="1"
+					styleClass="simpletablestyle">
+
+					<h:column>
+						<f:facet name="header">Nom de l'offre d'emploi </f:facet>
+				#{ligneJoblist.nomOffreEmploi}
+			</h:column>
+					<h:column>
+						<f:facet name="header"> Qualités requises </f:facet>
+				#{ligneJoblist.descriptionPoste}
+			</h:column>
+					<h:column>
+						<f:facet name="header"> Rémunération </f:facet>
+				#{ligneJoblist.salaires}
+			</h:column>
+
+					<h:column>
+						<f:facet name="header"> Nom de l'entreprise </f:facet>
+			#{ligneJoblist.entreprise.nomEntreprise}
+			
+			
+			</h:column>
+				<h:column>
+						<f:facet name="header" id="email"> Email de l'entreprise </f:facet>
+			#{ligneJoblist.entreprise.mailEntreprise}
+		
+			</h:column>
+
+					<h:column>
+						<f:facet name="header">Type de contrat</f:facet>	
+						
+				#{ligneTodolist.preferenceTypeContrat.nomTypeContrat}
+				</h:column>
+
+				
+					<h:column>
+						<f:facet name="header">Envoyer une candidature</f:facet>
+						<p:commandButton align="left" value="Postuler"
+						
+						actionListener= "#{offreEmploiController.chargerOffreEmploi(ligneJoblist)}"
+						action="postuler?faces-redirect=true&amp;includeViewParams=true"
+							>
+				
+						</p:commandButton>
+					</h:column>
+						
+				</h:dataTable>
+			</div>
+
+			
+		</h:form>
+	</ui:define>
+</ui:composition>

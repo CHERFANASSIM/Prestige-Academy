@@ -1,0 +1,133 @@
+@charset "ISO-8859-1";
+
+.content {
+	overflow: scroll;
+}
+
+body {
+	background-image:
+		url("/prestige-academy-web/javax.faces.resource/background.jpg.xhtml?ln=images");
+	min-height: 100vh;
+	overflow-x: hidden;
+	background-size: cover;
+}
+
+.titres {
+	font-size: 30px;
+	color: #752020;
+}
+
+#box1 {
+	height: 200px;
+	width: 300px;
+	margin-left: 300px;
+	padding: 50px;
+	border: 2px solid #dac0c28a;
+	box-shadow: 7px 7px 15px #805353;
+	background: #eae7e7;
+	float: left;
+	align: center;
+	margin-top: 90px;
+	border-radius: 15px;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7),
+		to(#9c8a8a));
+}
+
+#box2 {
+	height: 200px;
+	width: 300px;
+	margin: 37px;
+	padding: 50px;
+	border: 2px solid #dac0c28a;
+	box-shadow: 7px 7px 15px #805353;
+	background: #eae7e7;
+	float: left;
+	align: center;
+	margin-top: 90px;
+	border-radius: 15px;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7),
+		to(#9c8a8a));
+}
+
+#box3 {
+	height: 200px;
+	width: 300px;
+	margin-right: 300px;
+	padding: 50px;
+	border: 2px solid #dac0c28a;
+	box-shadow: 7px 7px 15px #805353;
+	background: #eae7e7;
+	float: right;
+	align: center;
+	margin-top: 90px;
+	border-radius: 15px;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7),
+		to(#9c8a8a));
+}
+
+.btn {
+	display: block;
+	width: 150px;
+	height: 50px;
+	text-align: center;
+	vertical-align: middle;
+	color: #ffffff;
+	text-decoration: none;
+	border-radius: 15px;
+	color: #ffffff;
+	border: solid 3px rgba(0, 0, 0, .2);
+	background: #941111;
+	background: -webkit-gradient(linear, left top, left bottom, from(#791515),
+		to(#9e6e6e));
+	background: -moz-linear-gradient(top, #e6e1d9, #9e8979);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a',
+		endColorstr='#f47a20');
+}
+
+.btn:hover {
+	box-shadow: 0 5px 6px 0 #9a937f, 0 7px 15px 0 #afa591;
+	background: -webkit-gradient(linear, left top, left bottom, from(#a9861ab3),
+		to(#b7a0167a));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11',
+		endColorstr='#f06015');
+}
+
+#global {
+	margin-top: 220px;
+	margin-left: 650px;
+	margin-right: 450px;
+	padding: 50px;
+	border: 2px solid #33333352;
+	box-shadow: 7px 7px 15px #312d2d;
+	background: #f2f2f26e;
+	border-radius: 15px;
+	width: 500px;
+}
+
+#message {
+	display: table;
+	margin: 0px auto;
+}
+
+#infosPerso {
+	margin: 50px;
+}
+
+#button {
+	margin: 50px;
+}
+
+#info {
+	margin: 20px;
+}
+
+#logo {
+	width: 280px;
+	height: 280px;
+	background-image:
+		url("/prestige-academy-web/javax.faces.resource/logo.png.xhtml?ln=images");
+	background-size: cover;
+	margin: 0px auto;
+	margin-top: 80px;
+}
+

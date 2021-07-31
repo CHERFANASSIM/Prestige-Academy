@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+
+	<ui:define name="content">
+		<h:head>
+			<h:outputStylesheet library="css" name="cssDefault1.css" />
+		</h:head>
+
+		<body>
+
+			<h:form id="form" var="evenementSelected">
+
+				<div class="gauche">
+					<h:panelGrid columns="2" border="1" bgcolor="#C3969F"
+						cellpadding="15" cellspacing="4">
+
+						<f:facet name="header">
+							<h:outputLabel value="Fiche Evenement "></h:outputLabel>
+						</f:facet>
+
+
+						<h:outputLabel id="typeEvlabel" value="Type de l'évenement :"></h:outputLabel>
+						<h:selectOneMenu id="trl"
+							value="#{evenementControlleur.selectedTypeEvenement}"
+							style="width:125px">
+							<f:selectItems value="#{evenementControlleur.listeTypeEvenement}"
+								var="evt" itemLabel="#{evt.nomTypeEvenement}"
+								itemValue="#{evt.typeEvenementID}" />
+						</h:selectOneMenu>
+
+						<h:selectOneMenu id="uti"
+							value="#{evenementControlleur.selectedUtilisateur}"
+							style="width:125px">
+							<f:selectItems value="#{evenementControlleur.listeUtilisateurs}"
+								var="utilisateur"
+								itemLabel="#{utilisateur.identifiantUtilisateur}"
+								itemValue="#{utilisateur.identifiantUtilisateur}" /></h:selectOneMenu>
+
+
+
+							<h:outputLabel id="dateEvenementLabel"
+								value="Date de l'événement:" for="dateEvenementTxt" />
+							<h:inputText id="dateEvenementTxt"
+								value="#{evenementControlleur.evenementModifie.dateEvenement}"
+								size="10">
+								<f:convertDateTime pattern="yyyy-mm-dd" />
+							</h:inputText>
+
+							<h:outputLabel id="timeLabel" value="L'heure de l'événement :"
+								for="heureEvenementTxt" />
+							<h:inputText id="heureEvenementTxt"
+								value="#{evenementControlleur.evenementModifie.heureEvenement}"
+								size="30"></h:inputText>
+
+
+							<h:outputLabel id="lieuLabel" value="Lieu de l'évenement :"
+								for="lieuEvenementTxt" />
+							<h:inputText id="lieuEvenementTxt"
+								value="#{evenementControlleur.evenementModifie.lieuEvenement}"
+								size="30"></h:inputText>
+
+
+							<h:outputLabel id="participantsLabel" value="Participants:"
+								for="participantsTxt" />
+							<h:inputTextarea id="participantsTxt"
+								value="#{evenementControlleur.evenementModifie.personneEvenement}"></h:inputTextarea>
+
+
+							<h:outputLabel id="descriptionLabel" value="Description:"
+								for="descriptionTxt" />
+							<h:inputTextarea id="descriptionTxt"
+								value="#{evenementControlleur.evenementModifie.descriptionEvenement}"></h:inputTextarea>
+
+
+							<h:commandButton value="Enregistrer"
+								action="#{evenementControlleur.modifierEvenement}"></h:commandButton>
+							<h:messages styleClass="messages" errorClass="invalid"
+								infoClass="valid" warnClass="warning" globalOnly="true" />
+					</h:panelGrid>
+
+				</div>
+				<div class="droite">
+					<p:tabView>
+						<p:tab title="Photo de l'évenement">
+							<h:panelGrid columns="2" cellpadding="10">
+								<p:graphicImage />
+
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Envoi de E-mail">
+							<h:panelGrid columns="2" cellpadding="10">
+
+								<h:outputText value="Génération de mail automatique " />
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Liste des participants à l'événement">
+							<h:panelGrid columns="2" cellpadding="10">
+
+								<h:outputText value="Afficher la liste des participants" />
+							</h:panelGrid>
+						</p:tab>
+					</p:tabView>
+				</div>
+
+			</h:form>
+
+		</body>
+
+	</ui:define>
+</ui:composition>

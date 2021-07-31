@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+
+	<ui:define name="content">
+
+		<h2>Nu</h2>
+
+		<h:form id="createOrganisme">
+			<h:panelGrid columns="2">
+
+				<h:outputLabel value="Nom de l'organisme:" for="nomOrganismeTxt" />
+				<h:inputText id="nomOrganismeTxt"
+					value="#{organismesController.organismeFinancementCree.nomOrganismeFinancement}"></h:inputText>
+
+				<h:outputLabel id="descriptionOrganisme" value="Description :"
+					for="descriptionOrganismeTxt" />
+				<h:inputText id="descriptionOrganismeTxt"
+					value="#{organismesController.organismeFinancementCree.descriptionOrganismeFinancement}"
+					size="50"></h:inputText>
+
+				<h:outputLabel value="Email :" for="emailOrganismeTxt" />
+				<h:inputText id="emailOrganismeTxt"
+					value="#{organismesController.organismeFinancementCree.mailOrganismeFinancement}"
+					size="20"></h:inputText>
+
+				<h:outputLabel value="Telephone :" for="telephoneOrganismeTxt" />
+				<h:inputText id="telephoneOrganismeTxt"
+					value="#{organismesController.organismeFinancementCree.telephoneOrganismeFinancement}"
+					size="20"></h:inputText>
+
+				<h:outputLabel value="Interlocuteur :"
+					for="interlocuteurOrganismeTxt" />
+				<h:inputText id="interlocuteurOrganismeTxt"
+					value="#{organismesController.organismeFinancementCree.interlocuteursOrganismeFinancement}"
+					size="20"></h:inputText>
+
+				<h:outputLabel value="logo :" for="logoOrganismeTxt" />
+				<h:inputText id="logoOrganismeTxt"
+					value="#{organismesController.organismeFinancementCree.logoUrlOrga}"
+					size="20"></h:inputText>
+
+				<h:outputLabel value="Date du debut du partenariat :"
+					for="dateDebutParteariatTxt" />
+				<h:inputText id="dateDebutParteariatTxt"
+					value="#{organismesController.organismeFinancementCree.dateDebutPartenariatOrganisme}"
+					size="10">
+					<f:convertDateTime pattern="dd-mm-yyyy" />
+				</h:inputText>
+
+				<h:outputLabel value="Condition d'accées :" for="conditionAccesTxt" />
+				<h:inputText id="conditionAccesTxt"
+					value="#{organismesController.organismeFinancementCree.conditionsAcces}"
+					size="20"></h:inputText>
+
+				<h:outputLabel value="Adresse :" for="nomAdresseTxt" />
+				<h:inputText id="nomAdresseTxt"
+					value="#{organismesController.organismeFinancementCree.adresse}"
+					size="20"></h:inputText>
+
+				<h:outputLabel value="Ville :" for="villeTxt" />
+				<h:inputText id="villeTxt"
+					value="#{organismesController.organismeFinancementCree.ville}"
+					size="20"></h:inputText>
+
+				<h:outputLabel value="Type de financement :"></h:outputLabel>
+				<h:selectOneMenu id="typeFinancementTxt"
+					value="#{organismesController.selectedTypeFinancement}"
+					style="width:125px">
+					<f:selectItems value="#{organismesController.listeTypeFinancement}"
+						var="typeFin" itemLabel="#{typeFin.nomTypeFinancement}"
+						itemValue="#{typeFin.nomTypeFinancement}" />
+				</h:selectOneMenu>
+
+				<h:outputLabel value="Type prospect :"></h:outputLabel>
+				<h:selectOneMenu id="typeProspectTxt"
+					value="#{organismesController.selectedTypeProspect}"
+					style="width:125px">
+					<f:selectItems value="#{organismesController.listeTypeProspect}"
+						var="typePros" itemLabel="#{typePros.nomProspect}"
+						itemValue="#{typePros.nomProspect}" />
+				</h:selectOneMenu>
+
+				<h:outputLabel value="Statut :"></h:outputLabel>
+				<h:selectOneMenu id="statutTxt"
+					value="#{organismesController.selectedStatut}"
+					style="width:125px">
+					<f:selectItems value="#{organismesController.listeStatut}"
+						var="typeStat" itemLabel="#{typeStat.nomStatut}"
+						itemValue="#{typeStat.nomStatut}" />
+				</h:selectOneMenu>
+
+				<h:commandButton action="#{organismesController.createOrganisme}"
+					value="Créer"
+					update="@form: createOrganisme"></h:commandButton>
+				<h:messages styleClass="messages" errorClass="invalid"
+					infoClass="valid" warnClass="warning" globalOnly="true" />
+			</h:panelGrid>
+		</h:form>
+
+
+	</ui:define>
+</ui:composition>

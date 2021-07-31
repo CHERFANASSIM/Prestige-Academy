@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	 xmlns:ui="http://java.sun.com/jsf/facelets">
+<body>
+	<ui:composition>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var table = $('#example').DataTable();
+
+				$('#example tbody').on('click', 'tr', function() {
+					if ($(this).hasClass('selected')) {
+						$(this).removeClass('selected');
+					} else {
+						table.$('tr.selected').removeClass('selected');
+						$(this).addClass('selected');
+					}
+				});
+
+				$('#button').click(function() {
+					table.row('.selected').remove().draw(false);
+				});
+			});
+		</script>
+
+
+	</ui:composition>
+<ui:composition>
+
+
+@media (max-width:575px) {
+    .display-4 {
+        font-size: 1.5rem;
+    }
+    .day h5 {
+        background-color: #f8f9fa;
+        padding: 3px 5px 5px;
+        margin: -8px -8px 8px -8px;
+    }
+    .date {
+        padding-left: 4px;
+    }
+}
+
+@media (min-width: 576px) {
+    .day {
+        height: 14.2857vw;
+    }
+}
+
+
+
+</ui:composition>
+</body>
+</html>

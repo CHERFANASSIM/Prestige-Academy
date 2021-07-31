@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>Connexion</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF8" />
+	<h:outputStylesheet library="css" name="cssConnexion.css" />
+</h:head>
+
+<h:body>
+	<br />
+	<div id="global">
+	<div id="message" align="center">
+		<h:outputLabel id="message" value="#{connexionController.message}" />
+	</div>
+
+	<div id="infosPerso" align="center">
+		<h:form id="personnesForm">
+			<h3>Veuillez vous connecter afin d'acceder à la plateforme</h3>
+			<h:panelGrid columns="2">
+				<p:outputLabel id="mailUtilisateurLabel" value="Identifiant :"
+					for="mailUtilisateurTxt" />
+				<p:inputText id="mailUtilisateurTxt"
+					value="#{connexionController.identifiant}" size="15"></p:inputText>
+
+				<p:outputLabel id="passewordUtilisateurLabel" value="Mot de Passe:"
+					for="passewordUtilisateurLabelTxt" />
+				<p:inputText id="passewordUtilisateurLabelTxt" type="password"
+					value="#{connexionController.mdp}" size="15"></p:inputText>
+			</h:panelGrid>
+			<div id="button" align="center">
+				<p:commandButton value=" Se connecter"
+					action="#{connexionController.seConnecter()}" update="message" />
+			</div>
+		</h:form>
+
+	</div>
+
+	<div id="info" class="text-center p-t-90" align="center">
+		<a  href="#">Identifiant ou Mot de Passe oublié(s) ? Merci de contacter le service Informatique de l'École </a>
+			
+	</div>
+</div>
+
+</h:body>
+</html>
